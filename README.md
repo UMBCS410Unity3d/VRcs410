@@ -1,2 +1,8 @@
 # VRcs410
-Zheng Zheng 
+Team Members:
+  Haikun Huang
+  Zheng Zheng 
+  Fangyu Lin
+  
+Project Agreement:
+
