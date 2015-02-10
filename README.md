@@ -1,6 +1,7 @@
 # VRcs410
 
 Team Members:
+
   Ankur Upadhyay
 
   Haikun Huang 
