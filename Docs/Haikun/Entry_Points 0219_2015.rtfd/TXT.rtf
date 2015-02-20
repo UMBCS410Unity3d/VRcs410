@@ -1,0 +1,157 @@
+{\rtf1\ansi\ansicpg936\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww17900\viewh11760\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 // Haikun huang \
+// 2/19/15\
+\
+As we discussed in our meeting time, I created and finished the function of Entry Points.\
+\
+What is Entry Points?\
+\
+It is used to connect 2 levels/scenes.  For example, in the lobby, there is many doors/ways connecting to the others rooms/buildings, so, which door connecting to which rooms? Or say, what is the relationship between doors and rooms?  So, that is what the Entry points doing.\
+\
+So, let us download the project and you will see that I have already created a demo for Entry Points.\
+\
+Open Unity3D, and Click File->Build Settings\'85\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 {{\NeXTGraphic Pasted Graphic.tiff \width4240 \height5440
+}¬}\
+\
+and follow below, just drag and drop the demo scene into the builder,\
+{{\NeXTGraphic Pasted Graphic 1.tiff \width17960 \height14100
+}¬}\
+\
+Make sure the 
+\b HHK_Test_1
+\b0  on the top, this position will be loaded first.\
+Then, close the builder windows, and then test it in Unity.\
+\
+How does it work?\
+Double click the 
+\b HHK_Test_1
+\b0 .unity which is located in 
+\b _For Test_/Haikun/Scenes/
+\b0 , and you will see the like this,\
+{{\NeXTGraphic Pasted Graphic 2.tiff \width4420 \height2880
+}¬}\
+\
+Some import object you need to understand,\
+
+\b Player Test,
+\b0   I made this into a prefabs, so, it is a blue color.\
+And when you click the 
+\b Player Test
+\b0 , you will see the Inspector like this,\
+{{\NeXTGraphic Pasted Graphic 3.tiff \width5960 \height7020
+}¬}\
+\
+The component named 
+\b HHK_Role_Tags
+\b0 , it is an 
+\b extend tags
+\b0 , which is more power than the one Unity3D provided.  Once you understand the tags of Unity3d, you will understand mine, I will provide a study link later.\
+\
+So, now you can just use this 
+\b Player Test 
+\b0 prefabs, for a quickly test your code or scene, this prefabs is located in 
+\b _For Test_/Haikun/Prefabs/.
+\b0 \
+\
+Now, see the 
+\b Entry Points Manager
+\b0 , actually, it is a empty object, and attached a 
+\b HHK_Entry_Points_Manager,
+\b0  also this object as a group that make the all entry points in a well organization. so, please make the 
+\b Position
+\b0  and 
+\b Rotation
+\b0  
+\b Zero
+\b0 , and 
+\b Scale
+\b0  
+\b One.
+\b0 \
+{{\NeXTGraphic Pasted Graphic 4.tiff \width5900 \height5600
+}¬}\
+\
+This component is used to manager all the Entry Points in currently scene. So, once you setup all the entry points, please link/connect them to this manager, just drag and  drop it to the field of 
+\b Element
+\b0  X.  And modify the 
+\b Size
+\b0   if you need.\
+\
+And now, see the 
+\b Entry Point 0
+\f1 \'a3\'ac
+\f0\b0 it
+\b  
+\b0 is a prefabs, and attached 
+\b HHK_Entry_Point
+\b0 .\
+{{\NeXTGraphic Pasted Graphic 5.tiff \width10240 \height8040
+}¬}\
+\
+The var 
+\b To_next_level
+\b0   means which scene we need to go, and the 
+\b Which_start_point 
+\b0 means where the player will show up in the next scene.\
+The value of 
+\b Which_start_point
+\b0  is a index of the 
+\b Entry_Points
+\b0  of the manager.  so, please do this carefully.\
+\
+
+\b Note
+\b0 , once you create the prefabs, and setting/putting your prefabs(as a object) into the scene, you do want to use the 
+\b Apply 
+\b0 button which on the top of Inspector, because this function will 
+\b rewrite/sync
+\b0  all the objects which ref to the same prefabs, and you really do not want this.\
+\
+Also, the 
+\b collider 
+\b0  is 
+\b required
+\b0  (No mater what kind of the colliders), please make sure the check box 
+\b Is Trigger 
+\b0 is
+\b  Checked
+\b0 .\
+\
+
+\b So, now, try to build something our and write some useful code for our project.  And test them in your own folders.
+\b0 \
+\
+You can following the 
+\b Tasks
+\b0  which list in the agreement.  Just pick what you want.  \
+\
+PS, we did not assign any specific tasks to any person, so that feel free  to create/coding something.  Next meeting, we will discuss the tasks, and assign them to specific person.\
+\
+
+\b Some link you may want.
+\b0 \
+Tags:\
+{\field{\*\fldinst{HYPERLINK "http://unity3d.com/learn/tutorials/modules/beginner/editor/tags"}}{\fldrslt http://unity3d.com/learn/tutorials/modules/beginner/editor/tags}}\
+\
+Coding:\
+{\field{\*\fldinst{HYPERLINK "http://unity3d.com/learn/tutorials/modules/beginner/scripting"}}{\fldrslt http://unity3d.com/learn/tutorials/modules/beginner/scripting}}\
+\
+Animation:\
+{\field{\*\fldinst{HYPERLINK "http://unity3d.com/learn/tutorials/modules/beginner/animation"}}{\fldrslt http://unity3d.com/learn/tutorials/modules/beginner/animation}}\
+\
+Colliders & Triggers\
+{\field{\*\fldinst{HYPERLINK "http://unity3d.com/learn/tutorials/modules/beginner/physics/colliders"}}{\fldrslt http://unity3d.com/learn/tutorials/modules/beginner/physics/colliders}}\
+{\field{\*\fldinst{HYPERLINK "http://unity3d.com/learn/tutorials/modules/beginner/physics/colliders-as-triggers"}}{\fldrslt http://unity3d.com/learn/tutorials/modules/beginner/physics/colliders-as-triggers}}\
+\
+\
+\
+\
+\
+}
