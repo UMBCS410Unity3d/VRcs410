@@ -20,7 +20,13 @@ public class HHK_Role_Tags : MonoBehaviour
 
 		// or other special team
 		Male,
-		Female
+		Female,
+
+		Light_Switch,
+		WayPoint_Level_1,
+		WayPoint_Level_2,
+		WayPoint_Level_3,
+		WayPoint_Waitting_Point
 	}
 
 	// 所属团队
@@ -63,6 +69,7 @@ public class HHK_Role_Tags : MonoBehaviour
 		}
 		return role_tags.ToArray();
 	}
+	
 
 	// Use this for initialization
 	void Start () 
@@ -115,5 +122,6 @@ public class HHK_Role_Tags : MonoBehaviour
 		}
 		return true;
 	}
+
 
 }

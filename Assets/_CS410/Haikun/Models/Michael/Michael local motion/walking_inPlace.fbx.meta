@@ -1,0 +1,419 @@
+fileFormatVersion: 2
+guid: 0a61d4d337fbb4f8a879fdc1c11ec94a
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: abdomen
+    100002: bodyMorphs
+    100004: bodyMorphs_End
+    100006: chest
+    100008: eyeBrow
+    100010: eyeBrow_End
+    100012: head
+    100014: hip
+    100016: lCollar
+    100018: lEye
+    100020: lEye_End
+    100022: lFoot
+    100024: lForeArm
+    100026: lHand
+    100028: lIndex1
+    100030: lIndex2
+    100032: lIndex3
+    100034: lIndex3_End
+    100036: lMid1
+    100038: lMid2
+    100040: lMid3
+    100042: lMid3_End
+    100044: lowerJaw
+    100046: lPinky1
+    100048: lPinky2
+    100050: lPinky3
+    100052: lPinky3_End
+    100054: lRing1
+    100056: lRing2
+    100058: lRing3
+    100060: lRing3_End
+    100062: lShin
+    100064: lShldr
+    100066: lThigh
+    100068: lThumb1
+    100070: lThumb2
+    100072: lThumb3
+    100074: lThumb3_End
+    100076: lToe
+    100078: lToe_End
+    100080: neck
+    100082: rCollar
+    100084: rEye
+    100086: rEye_End
+    100088: rFoot
+    100090: rForeArm
+    100092: rHand
+    100094: rIndex1
+    100096: rIndex2
+    100098: rIndex3
+    100100: rIndex3_End
+    100102: rMid1
+    100104: rMid2
+    100106: rMid3
+    100108: rMid3_End
+    100110: rPinky1
+    100112: rPinky2
+    100114: rPinky3
+    100116: rPinky3_End
+    100118: rRing1
+    100120: rRing2
+    100122: rRing3
+    100124: rRing3_End
+    100126: rShin
+    100128: rShldr
+    100130: rThigh
+    100132: rThumb1
+    100134: rThumb2
+    100136: rThumb3
+    100138: rThumb3_End
+    100140: rToe
+    100142: rToe_End
+    100144: tongue01
+    100146: tongue02
+    100148: tongue03
+    100150: tongue04
+    100152: tongue05
+    100154: tongueBase
+    100156: tongueTip
+    100158: tongueTip_End
+    100160: upperJaw
+    100162: upperJaw_End
+    100164: //RootNode
+    400000: abdomen
+    400002: bodyMorphs
+    400004: bodyMorphs_End
+    400006: chest
+    400008: eyeBrow
+    400010: eyeBrow_End
+    400012: head
+    400014: hip
+    400016: lCollar
+    400018: lEye
+    400020: lEye_End
+    400022: lFoot
+    400024: lForeArm
+    400026: lHand
+    400028: lIndex1
+    400030: lIndex2
+    400032: lIndex3
+    400034: lIndex3_End
+    400036: lMid1
+    400038: lMid2
+    400040: lMid3
+    400042: lMid3_End
+    400044: lowerJaw
+    400046: lPinky1
+    400048: lPinky2
+    400050: lPinky3
+    400052: lPinky3_End
+    400054: lRing1
+    400056: lRing2
+    400058: lRing3
+    400060: lRing3_End
+    400062: lShin
+    400064: lShldr
+    400066: lThigh
+    400068: lThumb1
+    400070: lThumb2
+    400072: lThumb3
+    400074: lThumb3_End
+    400076: lToe
+    400078: lToe_End
+    400080: neck
+    400082: rCollar
+    400084: rEye
+    400086: rEye_End
+    400088: rFoot
+    400090: rForeArm
+    400092: rHand
+    400094: rIndex1
+    400096: rIndex2
+    400098: rIndex3
+    400100: rIndex3_End
+    400102: rMid1
+    400104: rMid2
+    400106: rMid3
+    400108: rMid3_End
+    400110: rPinky1
+    400112: rPinky2
+    400114: rPinky3
+    400116: rPinky3_End
+    400118: rRing1
+    400120: rRing2
+    400122: rRing3
+    400124: rRing3_End
+    400126: rShin
+    400128: rShldr
+    400130: rThigh
+    400132: rThumb1
+    400134: rThumb2
+    400136: rThumb3
+    400138: rThumb3_End
+    400140: rToe
+    400142: rToe_End
+    400144: tongue01
+    400146: tongue02
+    400148: tongue03
+    400150: tongue04
+    400152: tongue05
+    400154: tongueBase
+    400156: tongueTip
+    400158: tongueTip_End
+    400160: upperJaw
+    400162: upperJaw_End
+    400164: //RootNode
+    7400000: mixamo.com
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hip
+        weight: 1
+      - path: hip/abdomen
+        weight: 1
+      - path: hip/abdomen/chest
+        weight: 1
+      - path: hip/abdomen/chest/lCollar
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1/lIndex2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1/lIndex2/lIndex3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1/lIndex2/lIndex3/lIndex3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1/lMid2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1/lMid2/lMid3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1/lMid2/lMid3/lMid3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1/lPinky2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1/lPinky2/lPinky3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1/lPinky2/lPinky3/lPinky3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1/lRing2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1/lRing2/lRing3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1/lRing2/lRing3/lRing3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1/lThumb2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1/lThumb2/lThumb3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1/lThumb2/lThumb3/lThumb3_End
+        weight: 1
+      - path: hip/abdomen/chest/neck
+        weight: 1
+      - path: hip/abdomen/chest/neck/head
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/eyeBrow
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/eyeBrow/eyeBrow_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lEye
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lEye/lEye_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04/tongue05
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04/tongue05/tongueTip
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04/tongue05/tongueTip/tongueTip_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/rEye
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/rEye/rEye_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/upperJaw
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/upperJaw/upperJaw_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1/rIndex2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1/rIndex2/rIndex3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1/rIndex2/rIndex3/rIndex3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1/rMid2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1/rMid2/rMid3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1/rMid2/rMid3/rMid3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1/rPinky2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1/rPinky2/rPinky3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1/rPinky2/rPinky3/rPinky3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1/rRing2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1/rRing2/rRing3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1/rRing2/rRing3/rRing3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1/rThumb2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1/rThumb2/rThumb3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1/rThumb2/rThumb3/rThumb3_End
+        weight: 1
+      - path: hip/bodyMorphs
+        weight: 1
+      - path: hip/bodyMorphs/bodyMorphs_End
+        weight: 1
+      - path: hip/lThigh
+        weight: 1
+      - path: hip/lThigh/lShin
+        weight: 1
+      - path: hip/lThigh/lShin/lFoot
+        weight: 1
+      - path: hip/lThigh/lShin/lFoot/lToe
+        weight: 1
+      - path: hip/lThigh/lShin/lFoot/lToe/lToe_End
+        weight: 1
+      - path: hip/rThigh
+        weight: 1
+      - path: hip/rThigh/rShin
+        weight: 1
+      - path: hip/rThigh/rShin/rFoot
+        weight: 1
+      - path: hip/rThigh/rShin/rFoot/rToe
+        weight: 1
+      - path: hip/rThigh/rShin/rFoot/rToe/rToe_End
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
