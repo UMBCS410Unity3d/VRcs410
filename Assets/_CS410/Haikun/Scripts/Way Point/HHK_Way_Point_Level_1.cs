@@ -23,7 +23,7 @@ public class HHK_Way_Point_Level_1 : MonoBehaviour
 	public HHK_Way_Point_Level_2[] wayPoints;
 
 	// list of the waitting point
-	public HHK_Waiting_Point[] waittingPoints;
+	public HHK_Waiting_Point waittingPoint;
 
 	// list of the Charactors, who are staying in this area currently.
 	List<HHK_Role_Tags> charactors;
@@ -60,6 +60,26 @@ public class HHK_Way_Point_Level_1 : MonoBehaviour
 	void Leave_From_This_Place(HHK_Role_Tags role)
 	{
 		charactors.Remove(role);
+	}
+
+	// if and level 2 way point available, return it
+	public HHK_Way_Point_Level_2 Any_Available_Spot()
+	{
+		List<HHK_Way_Point_Level_2> ret = new List<HHK_Way_Point_Level_2>();
+		foreach(HHK_Way_Point_Level_2 spot in wayPoints)
+		{
+			if (spot.Is_Ready())
+			{
+				ret.Add(spot);
+			}
+		}
+
+		// no any available spot
+		if (ret.Count == 0)
+			return null;
+
+		// randomly chooes a spot
+		return ret[Random.Range(0,ret.Count)];
 	}
 
 

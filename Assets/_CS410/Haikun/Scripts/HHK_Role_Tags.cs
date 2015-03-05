@@ -53,6 +53,12 @@ public class HHK_Role_Tags : MonoBehaviour
 		return role_tags.ToArray();
 	}
 
+	public static HHK_Role_Tags[] Find_Objects_Belong_Team(TAG tag)
+	{
+		HHK_Role_Tags.TAG[] tags= {tag};
+		return Find_Objects_Belong_Teams(tags);
+	}
+
 	// 寻找包含指定敌对团队的角色
 	public static HHK_Role_Tags[] Find_Objects_Against_Teams(TAG[] tags)
 	{
@@ -68,6 +74,12 @@ public class HHK_Role_Tags : MonoBehaviour
 				role_tags.Add(t);
 		}
 		return role_tags.ToArray();
+	}
+
+	public static HHK_Role_Tags[] Find_Objects_Against_Team(TAG tag)
+	{
+		HHK_Role_Tags.TAG[] tags= {tag};
+		return Find_Objects_Against_Teams(tags);
 	}
 	
 
@@ -122,6 +134,6 @@ public class HHK_Role_Tags : MonoBehaviour
 		}
 		return true;
 	}
-
+	
 
 }
