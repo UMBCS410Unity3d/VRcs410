@@ -34,7 +34,7 @@ namespace HutongGames.PlayMaker.Actions
 
 			if (movie != null && gameObject.Value != null) 
 			{
-				var audio = gameObject.Value.audio;
+				var audio = gameObject.Value.GetComponent<AudioSource>();
 				if (audio != null)
 				{
 					audio.clip = movie.audioClip;

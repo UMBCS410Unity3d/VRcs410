@@ -46,7 +46,7 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			GameObject go = Fsm.GetOwnerDefaultTarget(anOwner);
             if (go == null) return;
-			itweenEvents = (iTweenFSMEvents)go.AddComponent("iTweenFSMEvents");
+			itweenEvents = (iTweenFSMEvents)go.AddComponent<iTweenFSMEvents>();
 			itweenEvents.itweenFSMAction = this;
 			iTweenFSMEvents.itweenIDCount++;
 			itweenID = iTweenFSMEvents.itweenIDCount;

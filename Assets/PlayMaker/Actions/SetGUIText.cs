@@ -36,8 +36,8 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetGUIText()
 		{
 			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.guiText != null)
-					go.guiText.text = text.Value;
+			if (go != null && go.GetComponent<GUIText>() != null)
+					go.GetComponent<GUIText>().text = text.Value;
 		}
 	}
 }

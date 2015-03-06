@@ -40,10 +40,10 @@ namespace HutongGames.PlayMaker.Actions
 		void DoGUITextureAlpha()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.guiTexture != null)
+			if (go != null && go.GetComponent<GUITexture>() != null)
 			{
-				Color color = go.guiTexture.color;
-				go.guiTexture.color = new Color(color.r, color.g, color.b, alpha.Value);
+				Color color = go.GetComponent<GUITexture>().color;
+				go.GetComponent<GUITexture>().color = new Color(color.r, color.g, color.b, alpha.Value);
 			}			
 		}
 	}

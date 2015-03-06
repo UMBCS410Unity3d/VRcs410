@@ -28,7 +28,7 @@ namespace HutongGames.PlayMakerEditor
 
             if (go != null && fov > 0)
             {
-                var cam = go.camera;
+                var cam = go.GetComponent<Camera>();
                 if (cam != null)
                 {
                     var originalFOV = cam.fieldOfView;

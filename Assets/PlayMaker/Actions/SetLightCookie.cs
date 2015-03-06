@@ -33,7 +33,7 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 			
-			var light = go.light;
+			var light = go.GetComponent<Light>();
 			if (light == null)
 			{
 				LogError("Missing Light Component!");

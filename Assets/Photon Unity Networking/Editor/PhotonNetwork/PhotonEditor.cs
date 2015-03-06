@@ -459,7 +459,7 @@ public class PhotonEditor : EditorWindow
             GUILayout.FlexibleSpace();
 
 
-            if (!InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.Android) || !InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.iPhone))
+            if (!InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.Android) || !InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.iOS))
             {
                 GUILayout.Label(CurrentLang.MobileExportNoteLabel);
             }
@@ -530,7 +530,7 @@ public class PhotonEditor : EditorWindow
         EditorGUILayout.Separator();
 
         GUILayout.Label(CurrentLang.PUNWizardLabel, EditorStyles.boldLabel);
-        if (!InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.Android) || !InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.iPhone))
+        if (!InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.Android) || !InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.iOS))
         {
             if (isPunPlus)
             {

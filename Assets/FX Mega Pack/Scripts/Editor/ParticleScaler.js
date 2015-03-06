@@ -111,9 +111,9 @@ class ParticleScaler extends EditorWindow {
             	var pss: ParticleSystemRenderer[];
            	 	pss = gameObj.GetComponentsInChildren.<ParticleSystemRenderer> ();
             	for (var ps: ParticleSystemRenderer in pss) {
-            		ps.particleSystem.Stop();
+            		ps.GetComponent.<ParticleSystem>().Stop();
 					ps.maxParticleSize = _maxParticleScale;
-					ps.particleSystem.Play();
+					ps.GetComponent.<ParticleSystem>().Play();
 				}
 			}
 	}

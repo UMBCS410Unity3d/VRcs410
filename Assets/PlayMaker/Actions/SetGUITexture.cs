@@ -22,9 +22,9 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.guiTexture != null)
+			if (go != null && go.GetComponent<GUITexture>() != null)
 			{
-				go.guiTexture.texture = texture.Value;
+				go.GetComponent<GUITexture>().texture = texture.Value;
 			}
 			
 			Finish();

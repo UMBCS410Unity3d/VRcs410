@@ -32,7 +32,7 @@ namespace HutongGames.PlayMaker.Actions
 				
 				if (jointComponent != null)
 				{
-					jointComponent.connectedBody = rigidBody.Value == null ? null : rigidBody.Value.rigidbody;
+					jointComponent.connectedBody = rigidBody.Value == null ? null : rigidBody.Value.GetComponent<Rigidbody>();
 				}
 			}
 

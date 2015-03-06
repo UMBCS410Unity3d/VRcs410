@@ -62,7 +62,7 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetVelocity()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null || go.rigidbody == null)
+			if (go == null || go.GetComponent<Rigidbody>() == null)
 			{
 				return;
 			}
@@ -74,8 +74,8 @@ namespace HutongGames.PlayMaker.Actions
 			if (vector.IsNone)
 			{
 				velocity = space == Space.World ?
-					go.rigidbody.velocity : 
-					go.transform.InverseTransformDirection(go.rigidbody.velocity);
+					go.GetComponent<Rigidbody>().velocity : 
+					go.transform.InverseTransformDirection(go.GetComponent<Rigidbody>().velocity);
 			}
 			else
 			{
@@ -90,7 +90,7 @@ namespace HutongGames.PlayMaker.Actions
 
 			// apply
 			
-			go.rigidbody.velocity = space == Space.World ? velocity : go.transform.TransformDirection(velocity);
+			go.GetComponent<Rigidbody>().velocity = space == Space.World ? velocity : go.transform.TransformDirection(velocity);
 		}
 	}
 }

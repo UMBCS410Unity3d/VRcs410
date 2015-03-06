@@ -54,7 +54,7 @@ namespace HutongGames.PlayMaker.Actions
                 return;
             }
 
-            if (go.renderer == null)
+            if (go.GetComponent<Renderer>() == null)
             {
                 LogError("Missing Renderer!");
                 return;
@@ -68,26 +68,26 @@ namespace HutongGames.PlayMaker.Actions
 
             if (materialIndex.Value == 0 && !getFromSharedMaterial)
             {
-                storedTexture.Value = go.renderer.material.GetTexture(namedTex);
+                storedTexture.Value = go.GetComponent<Renderer>().material.GetTexture(namedTex);
             }
 
             else if (materialIndex.Value == 0 && getFromSharedMaterial)
             {
-                storedTexture.Value = go.renderer.sharedMaterial.GetTexture(namedTex);
+                storedTexture.Value = go.GetComponent<Renderer>().sharedMaterial.GetTexture(namedTex);
             }
 
-            else if (go.renderer.materials.Length > materialIndex.Value && !getFromSharedMaterial)
+            else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value && !getFromSharedMaterial)
             {
-                var materials = go.renderer.materials;
-                storedTexture.Value = go.renderer.materials[materialIndex.Value].GetTexture(namedTex);
-                go.renderer.materials = materials;
+                var materials = go.GetComponent<Renderer>().materials;
+                storedTexture.Value = go.GetComponent<Renderer>().materials[materialIndex.Value].GetTexture(namedTex);
+                go.GetComponent<Renderer>().materials = materials;
             }
 
-            else if (go.renderer.materials.Length > materialIndex.Value && getFromSharedMaterial)
+            else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value && getFromSharedMaterial)
             {
-                var materials = go.renderer.sharedMaterials;
-                storedTexture.Value = go.renderer.sharedMaterials[materialIndex.Value].GetTexture(namedTex);
-                go.renderer.materials = materials;
+                var materials = go.GetComponent<Renderer>().sharedMaterials;
+                storedTexture.Value = go.GetComponent<Renderer>().sharedMaterials[materialIndex.Value].GetTexture(namedTex);
+                go.GetComponent<Renderer>().materials = materials;
             }
         }
     }

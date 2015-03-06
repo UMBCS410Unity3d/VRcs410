@@ -28,10 +28,14 @@ public class HHK_Waiting_Point : MonoBehaviour
 
 	public bool change_color_for_test = false;
 
+	void Awake()
+	{
+		charactors = new List<HHK_Role_Tags>();
+	}
 	// Use this for initialization
 	void Start () 
 	{
-		charactors = new List<HHK_Role_Tags>();
+
 	}
 	
 	// Update is called once per frame

@@ -28,10 +28,14 @@ public class HHK_Way_Point_Level_1 : MonoBehaviour
 	// list of the Charactors, who are staying in this area currently.
 	List<HHK_Role_Tags> charactors;
 
+	void Awake()
+	{
+		charactors = new List<HHK_Role_Tags>();
+	}
 	// Use this for initialization
 	void Start () 
 	{
-		charactors = new List<HHK_Role_Tags>();
+
 	}
 	
 	// Update is called once per frame

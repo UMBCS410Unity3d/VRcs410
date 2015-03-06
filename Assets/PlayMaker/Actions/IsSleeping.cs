@@ -50,12 +50,12 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
 
-			if (go == null || go.rigidbody == null)
+			if (go == null || go.GetComponent<Rigidbody>() == null)
 			{
 				return;
 			}
 			
-			var isSleeping = go.rigidbody.IsSleeping();
+			var isSleeping = go.GetComponent<Rigidbody>().IsSleeping();
 			store.Value = isSleeping;
 
 			Fsm.Event(isSleeping ? trueEvent : falseEvent);

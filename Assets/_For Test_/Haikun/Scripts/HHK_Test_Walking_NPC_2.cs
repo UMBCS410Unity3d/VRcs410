@@ -24,6 +24,8 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 	// current state
 	public STATE state = STATE.Looking_WP_1;
 
+
+
 	// some speed
 	float speed_walk = 1.8f;
 	public float speed_run = 3.5f;
@@ -45,15 +47,20 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 
 	// role controller
 	HHK_Role_Controller role_controller;
-	
-	// Use this for initialization
-	void Start () 
+
+	void Awake()
 	{
 		agent = GetComponent<NavMeshAgent>();
 		role = GetComponent<HHK_Role_Tags>();
 		role_controller = GetComponent<HHK_Role_Controller>();
+	}
+	// Use this for initialization
+	void Start () 
+	{
+
 		// idle at beginning
 		role_controller.Play_Animation(HHK_Role_Controller.Idle);
+	
 	}
 	
 	// Update is called once per frame

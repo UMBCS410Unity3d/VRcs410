@@ -69,14 +69,14 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 
-			if (go.animation == null)
+			if (go.GetComponent<Animation>() == null)
 			{
 				LogWarning("Missing animation component!");
 				Finish();
 				return;
 			}
 
-			anim = go.animation[animName.Value];
+			anim = go.GetComponent<Animation>()[animName.Value];
 
 			if (anim == null)
 			{
@@ -88,11 +88,11 @@ namespace HutongGames.PlayMaker.Actions
 			var time = blendTime.Value;
 			if (time < 0.001f)
 			{
-				go.animation.Play(animName.Value, playMode);
+				go.GetComponent<Animation>().Play(animName.Value, playMode);
 			}
 			else
 			{
-				go.animation.CrossFade(animName.Value, time, playMode);
+				go.GetComponent<Animation>().CrossFade(animName.Value, time, playMode);
 			}
 
 			prevAnimtTime = anim.time;
@@ -129,9 +129,9 @@ namespace HutongGames.PlayMaker.Actions
 		void StopAnimation()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.animation != null)
+			if (go != null && go.GetComponent<Animation>() != null)
 			{
-				go.animation.Stop(animName.Value);
+				go.GetComponent<Animation>().Stop(animName.Value);
 			}
 		}
 	}

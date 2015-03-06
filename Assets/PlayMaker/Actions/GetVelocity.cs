@@ -50,9 +50,9 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go == null) return;
-			if (go.rigidbody == null) return;
+			if (go.GetComponent<Rigidbody>() == null) return;
 
-			Vector3 velocity = go.rigidbody.velocity;
+			Vector3 velocity = go.GetComponent<Rigidbody>().velocity;
 
 			if (space == Space.Self)
 				velocity = go.transform.InverseTransformDirection(velocity);

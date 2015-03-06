@@ -62,13 +62,13 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 
-			if (go.renderer == null)
+			if (go.GetComponent<Renderer>() == null)
 			{
 				LogError("Missing Renderer!");
 				return;
 			}
 
-			if (go.renderer.material == null)
+			if (go.GetComponent<Renderer>().material == null)
 			{
 				LogError("Missing Material!");
 				return;
@@ -77,13 +77,13 @@ namespace HutongGames.PlayMaker.Actions
 
 			if (materialIndex.Value == 0)
 			{
-				go.renderer.material.SetTexture(namedTex, movie);
+				go.GetComponent<Renderer>().material.SetTexture(namedTex, movie);
 			}
-			else if (go.renderer.materials.Length > materialIndex.Value)
+			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
 			{
-				var materials = go.renderer.materials;
+				var materials = go.GetComponent<Renderer>().materials;
 				materials[materialIndex.Value].SetTexture(namedTex, movie);
-				go.renderer.materials = materials;
+				go.GetComponent<Renderer>().materials = materials;
 			}
 		}
 	}

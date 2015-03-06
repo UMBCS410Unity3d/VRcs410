@@ -22,9 +22,14 @@ public class HHK_Role_Controller : MonoBehaviour
 	float fadeTime = 0.1f;
 
 	// Use this for initialization
-	void Start () 
+	void Awake()
 	{
 		anim = GetComponent<Animator>();
+	}
+
+	void Start () 
+	{
+
 	}
 	
 	// Update is called once per frame

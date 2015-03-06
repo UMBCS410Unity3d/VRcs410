@@ -50,7 +50,7 @@ namespace HutongGames.PlayMaker.Actions
 		void DoAddAnimationClip()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null || go.animation == null)
+			if (go == null || go.GetComponent<Animation>() == null)
 			{
 				return;
 			}
@@ -64,11 +64,11 @@ namespace HutongGames.PlayMaker.Actions
 
 			if (firstFrame.Value == 0 && lastFrame.Value == 0)
 			{
-				go.animation.AddClip(animClip, animationName.Value);
+				go.GetComponent<Animation>().AddClip(animClip, animationName.Value);
 			}
 			else
 			{
-				go.animation.AddClip(animClip, animationName.Value, firstFrame.Value, lastFrame.Value, addLoopFrame.Value);
+				go.GetComponent<Animation>().AddClip(animClip, animationName.Value, firstFrame.Value, lastFrame.Value, addLoopFrame.Value);
 			}
 		}
 	}

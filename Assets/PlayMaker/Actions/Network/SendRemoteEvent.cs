@@ -45,18 +45,18 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
 
-			if (go == null || go.networkView == null)
+			if (go == null || go.GetComponent<NetworkView>() == null)
 			{
 				return;
 			}
 	
 			if (!stringData.IsNone && stringData.Value != "")
 			{
-				go.networkView.RPC("SendRemoteFsmEvent", mode,remoteEvent.Name,stringData.Value);
+				go.GetComponent<NetworkView>().RPC("SendRemoteFsmEvent", mode,remoteEvent.Name,stringData.Value);
 			}
 			else
 			{
-				go.networkView.RPC("SendRemoteFsmEvent", mode, remoteEvent.Name);
+				go.GetComponent<NetworkView>().RPC("SendRemoteFsmEvent", mode, remoteEvent.Name);
 			}
 			
 		}

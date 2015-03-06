@@ -30,9 +30,9 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go == null) return;
-			if (go.rigidbody == null) return;
+			if (go.GetComponent<Rigidbody>() == null) return;
 			
-			go.rigidbody.useGravity = useGravity.Value;
+			go.GetComponent<Rigidbody>().useGravity = useGravity.Value;
 		}
 	}
 }

@@ -149,7 +149,7 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (didHit)
 			{
-				storeHitObject.Value = hitInfo.collider.collider.gameObject;
+				storeHitObject.Value = hitInfo.collider.GetComponent<Collider>().gameObject;
                 storeHitPoint.Value = Fsm.RaycastHitInfo.point;
                 storeHitNormal.Value = Fsm.RaycastHitInfo.normal;
                 storeHitDistance.Value = Fsm.RaycastHitInfo.distance;

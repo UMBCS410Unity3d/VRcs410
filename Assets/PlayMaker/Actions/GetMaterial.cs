@@ -48,7 +48,7 @@ namespace HutongGames.PlayMaker.Actions
 			    return;
 		    }
 
-		    if (go.renderer == null)
+		    if (go.GetComponent<Renderer>() == null)
 		    {
 			    LogError("Missing Renderer!");
 			    return;
@@ -56,26 +56,26 @@ namespace HutongGames.PlayMaker.Actions
 		
 		    if (materialIndex.Value == 0 && !getSharedMaterial)
 		    {
-			    material.Value = go.renderer.material;
+			    material.Value = go.GetComponent<Renderer>().material;
 		    }
 		
 		    else if(materialIndex.Value == 0 && getSharedMaterial)
 		    {
-			    material.Value = go.renderer.sharedMaterial;
+			    material.Value = go.GetComponent<Renderer>().sharedMaterial;
 		    }
 	
-		    else if (go.renderer.materials.Length > materialIndex.Value && !getSharedMaterial)
+		    else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value && !getSharedMaterial)
 		    {
-			    var materials = go.renderer.materials;
+			    var materials = go.GetComponent<Renderer>().materials;
 			    material.Value = materials[materialIndex.Value];
-			    go.renderer.materials = materials;
+			    go.GetComponent<Renderer>().materials = materials;
 		    }
 
-		    else if (go.renderer.materials.Length > materialIndex.Value && getSharedMaterial)
+		    else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value && getSharedMaterial)
 		    {
-			    var materials = go.renderer.sharedMaterials;
+			    var materials = go.GetComponent<Renderer>().sharedMaterials;
 			    material.Value = materials[materialIndex.Value];
-			    go.renderer.sharedMaterials = materials;
+			    go.GetComponent<Renderer>().sharedMaterials = materials;
 		    }
 	    }
     }

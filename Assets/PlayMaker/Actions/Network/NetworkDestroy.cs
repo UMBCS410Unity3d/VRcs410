@@ -36,16 +36,16 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			// get the target
 			GameObject targetGo = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (targetGo == null || targetGo.networkView == null)
+			if (targetGo == null || targetGo.GetComponent<NetworkView>() == null)
 			{
 				return;
 			}
 
 			if (removeRPCs.Value)
 			{
-				Network.RemoveRPCs(targetGo.networkView.owner);
+				Network.RemoveRPCs(targetGo.GetComponent<NetworkView>().owner);
 			}
-			Network.DestroyPlayerObjects(targetGo.networkView.owner);		
+			Network.DestroyPlayerObjects(targetGo.GetComponent<NetworkView>().owner);		
 		}		
 	}
 }

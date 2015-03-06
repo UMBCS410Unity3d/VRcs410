@@ -40,7 +40,7 @@ namespace HutongGames.PlayMaker.Actions
 			GameObject go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
 			if (go == null) return;
 			
-			Camera camera = go.camera;
+			Camera camera = go.GetComponent<Camera>();
 			if (camera == null)
 			{
 				LogError("Missing Camera Component!");

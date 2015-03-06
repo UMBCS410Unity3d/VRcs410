@@ -49,13 +49,13 @@ namespace HutongGames.PlayMaker.Actions
 			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go == null) return;
 
-			if (go.renderer == null)
+			if (go.GetComponent<Renderer>() == null)
 			{
 				LogError("Missing Renderer!");
 				return;
 			}
 			
-			if (go.renderer.material == null)
+			if (go.GetComponent<Renderer>().material == null)
 			{
 				LogError("Missing Material!");
 				return;
@@ -63,13 +63,13 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (materialIndex.Value == 0)
 			{
-				go.renderer.material.SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
+				go.GetComponent<Renderer>().material.SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
 			}
-			else if (go.renderer.materials.Length > materialIndex.Value)
+			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
 			{
-				var materials = go.renderer.materials;
+				var materials = go.GetComponent<Renderer>().materials;
 				materials[materialIndex.Value].SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
-				go.renderer.materials = materials;
+				go.GetComponent<Renderer>().materials = materials;
 			}
 		}
 

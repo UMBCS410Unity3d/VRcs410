@@ -38,11 +38,15 @@ public class HHK_Test_Walking_NPC : MonoBehaviour {
 	// waiting index of the line
 	int index_of_waiting_line = 0;
 
-	// Use this for initialization
-	void Start () 
+	void Awake()
 	{
 		agent = GetComponent<NavMeshAgent>();
 		role = GetComponent<HHK_Role_Tags>();
+	}
+	// Use this for initialization
+	void Start () 
+	{
+
 	}
 	
 	// Update is called once per frame

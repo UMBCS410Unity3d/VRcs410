@@ -30,7 +30,7 @@ namespace HutongGames.PlayMaker.Actions
 			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go == null) return;
 			
-			Light light = go.light;
+			Light light = go.GetComponent<Light>();
 			if (light == null)
 			{
 				LogError("Missing Light Component!");

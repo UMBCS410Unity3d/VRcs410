@@ -49,7 +49,7 @@ namespace HutongGames.PlayMaker.Actions
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go == null) return;
 
-			var camera = go.camera;
+			var camera = go.GetComponent<Camera>();
 			if (camera == null)
 			{
 				LogError("Missing Camera Component!");

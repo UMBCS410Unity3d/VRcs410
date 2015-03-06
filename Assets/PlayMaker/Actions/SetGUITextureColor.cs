@@ -40,9 +40,9 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetGUITextureColor()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.guiTexture != null)
+			if (go != null && go.GetComponent<GUITexture>() != null)
 			{
-				go.guiTexture.color = color.Value;
+				go.GetComponent<GUITexture>().color = color.Value;
 			}
 		}
 	}

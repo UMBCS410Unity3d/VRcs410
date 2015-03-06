@@ -43,9 +43,9 @@ namespace HutongGames.PlayMaker.Actions
 			
 			GameObject go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
 			if (go == null) return;
-			if (go.rigidbody == null) return;
+			if (go.GetComponent<Rigidbody>() == null) return;
 
-			Vector3 velocity = go.rigidbody.velocity;
+			Vector3 velocity = go.GetComponent<Rigidbody>().velocity;
 			
 			storeResult.Value = velocity.magnitude;
 		}

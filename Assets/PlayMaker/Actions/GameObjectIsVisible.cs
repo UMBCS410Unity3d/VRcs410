@@ -54,12 +54,12 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
 			
-			if (go == null || go.renderer == null)
+			if (go == null || go.GetComponent<Renderer>() == null)
 			{
 				return;
 			}
 			
-			var isVisible = go.renderer.isVisible;
+			var isVisible = go.GetComponent<Renderer>().isVisible;
 			
 			storeResult.Value = isVisible;
 

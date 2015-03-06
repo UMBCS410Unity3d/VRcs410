@@ -25,7 +25,7 @@ class MaterialOverride extends EditorWindow {
       
     function OnGUI () {
     	if(Selection.activeTransform != null){
-    	systemParent = Selection.activeTransform.particleSystem;
+    	systemParent = Selection.activeTransform.GetComponent.<ParticleSystem>();
     		
     	}
     	EditorGUILayout.LabelField("Force 2 or 1 material(s) on shuriken particle system(s)");

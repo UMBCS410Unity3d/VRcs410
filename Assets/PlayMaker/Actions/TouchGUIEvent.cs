@@ -123,7 +123,7 @@ namespace HutongGames.PlayMaker.Actions
 					return;
 				}
 
-				guiElement = go.guiTexture ?? (GUIElement) go.guiText;
+				guiElement = go.GetComponent<GUITexture>() ?? (GUIElement) go.GetComponent<GUIText>();
 
 				if (guiElement == null)
 				{

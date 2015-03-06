@@ -71,13 +71,13 @@ namespace HutongGames.PlayMaker.Actions
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go == null) return;
 
-			if (go.renderer == null)
+			if (go.GetComponent<Renderer>() == null)
 			{
 				LogError("Missing Renderer!");
 				return;
 			}
 			
-			if (go.renderer.material == null)
+			if (go.GetComponent<Renderer>().material == null)
 			{
 				LogError("Missing Material!");
 				return;
@@ -85,13 +85,13 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (materialIndex.Value == 0)
 			{
-				go.renderer.material.SetColor(colorName, color.Value);
+				go.GetComponent<Renderer>().material.SetColor(colorName, color.Value);
 			}
-			else if (go.renderer.materials.Length > materialIndex.Value)
+			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
 			{
-				var materials = go.renderer.materials;
+				var materials = go.GetComponent<Renderer>().materials;
 				materials[materialIndex.Value].SetColor(colorName, color.Value);
-				go.renderer.materials = materials;			
+				go.GetComponent<Renderer>().materials = materials;			
 			}		
 		}
 	}

@@ -73,9 +73,9 @@ namespace HutongGames.PlayMaker.Actions
 
 			// Make the rigid body not change rotation
 			// TODO: Original Unity script had this. Expose as option?
-			if (go.rigidbody)
+			if (go.GetComponent<Rigidbody>())
 			{
-				go.rigidbody.freezeRotation = true;
+				go.GetComponent<Rigidbody>().freezeRotation = true;
 			}
 
             // initialize rotation

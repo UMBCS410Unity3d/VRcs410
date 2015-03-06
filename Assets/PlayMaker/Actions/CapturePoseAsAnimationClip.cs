@@ -47,7 +47,7 @@ namespace HutongGames.PlayMaker.Actions
 		void DoCaptureAnimationClip()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null || go.animation == null)
+			if (go == null || go.GetComponent<Animation>() == null)
 			{
 				return;
 			}

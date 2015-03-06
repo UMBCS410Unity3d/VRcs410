@@ -81,7 +81,7 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 
-			if (go.rigidbody == null)
+			if (go.GetComponent<Rigidbody>() == null)
 			{
 				LogWarning("Missing rigid body: " + go.name);
 				return;
@@ -101,16 +101,16 @@ namespace HutongGames.PlayMaker.Actions
 			{
 				if (!atPosition.IsNone)
 				{
-					go.rigidbody.AddForceAtPosition(force, atPosition.Value, forceMode);
+					go.GetComponent<Rigidbody>().AddForceAtPosition(force, atPosition.Value, forceMode);
 				}
 				else
 				{
-					go.rigidbody.AddForce(force, forceMode);
+					go.GetComponent<Rigidbody>().AddForce(force, forceMode);
 				}
 			}
 			else
 			{
-				go.rigidbody.AddRelativeForce(force,forceMode);
+				go.GetComponent<Rigidbody>().AddRelativeForce(force,forceMode);
 			}
 		}
 

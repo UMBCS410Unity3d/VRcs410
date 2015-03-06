@@ -33,13 +33,13 @@ namespace HutongGames.PlayMaker.Actions
 			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go == null) return;
 
-			if (go.animation == null)
+			if (go.GetComponent<Animation>() == null)
 			{
 				LogWarning("Missing animation component: " + go.name);
 				return;
 			}
 
-			go.animation.Stop(animName.Value);
+			go.GetComponent<Animation>().Stop(animName.Value);
 		}
 		/*
 			public override string ErrorCheck()

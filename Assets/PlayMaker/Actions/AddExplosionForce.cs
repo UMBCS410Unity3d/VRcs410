@@ -66,12 +66,12 @@ namespace HutongGames.PlayMaker.Actions
 		void DoAddExplosionForce()
 		{
 			var go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
-            if (go == null || center == null || go.rigidbody == null)
+            if (go == null || center == null || go.GetComponent<Rigidbody>() == null)
 			{
 			    return;
 			}
 
-			go.rigidbody.AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
+			go.GetComponent<Rigidbody>().AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
 		}
 	}
 }

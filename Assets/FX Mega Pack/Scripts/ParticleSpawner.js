@@ -74,10 +74,10 @@ function InfoPS (_ps:ParticleSystem, _nr:int){
 		currentPSInfo = "System" + ": " + _nr + "/" + particles.length +"\n"+
 		"Name: " + _ps.gameObject.name +"\n\n" +
 		"Main PS Sub Particles: " + _ps.transform.childCount  +"\n" +
-		"Main PS Materials: " + _ps.renderer.materials.length +"\n" +
-		"Main PS Shader: " + _ps.renderer.material.shader.name;
+		"Main PS Materials: " + _ps.GetComponent.<Renderer>().materials.length +"\n" +
+		"Main PS Shader: " + _ps.GetComponent.<Renderer>().material.shader.name;
 		//If plasma(two materials)
-		if(_ps.renderer.materials.length >= 2)currentPSInfo = currentPSInfo + "\n\n *Plasma not mobile optimized*";
+		if(_ps.GetComponent.<Renderer>().materials.length >= 2)currentPSInfo = currentPSInfo + "\n\n *Plasma not mobile optimized*";
 		//Usage Info
 		currentPSInfo = currentPSInfo + "\n\n Use mouse wheel to zoom, click and hold to rotate";
 		currentPSInfo = currentPSInfo.Replace("(Clone)", "");

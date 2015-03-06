@@ -84,8 +84,8 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (rendererOnly)
 			{
-				if (go.renderer != null)
-					go.renderer.enabled = state;
+				if (go.GetComponent<Renderer>() != null)
+					go.GetComponent<Renderer>().enabled = state;
 			}
 			else
             {

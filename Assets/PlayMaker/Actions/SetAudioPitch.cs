@@ -39,7 +39,7 @@ namespace HutongGames.PlayMaker.Actions
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
 			if (go != null)
 			{
-				var audio = go.audio;
+				var audio = go.GetComponent<AudioSource>();
 				if (audio != null)
 				{
 					if (!pitch.IsNone)
