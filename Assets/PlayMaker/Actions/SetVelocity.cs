@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Sets the Velocity of a Game Object. To leave any axis unchanged, set variable to 'None'. NOTE: Game object must have a rigidbody.")]
-	public class SetVelocity : FsmStateAction
+	public class SetVelocity : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -62,7 +62,7 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetVelocity()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null || go.GetComponent<Rigidbody>() == null)
+			if (!UpdateCache(go))
 			{
 				return;
 			}
@@ -74,8 +74,8 @@ namespace HutongGames.PlayMaker.Actions
 			if (vector.IsNone)
 			{
 				velocity = space == Space.World ?
-					go.GetComponent<Rigidbody>().velocity : 
-					go.transform.InverseTransformDirection(go.GetComponent<Rigidbody>().velocity);
+					rigidbody.velocity : 
+					go.transform.InverseTransformDirection(rigidbody.velocity);
 			}
 			else
 			{
@@ -90,7 +90,7 @@ namespace HutongGames.PlayMaker.Actions
 
 			// apply
 			
-			go.GetComponent<Rigidbody>().velocity = space == Space.World ? velocity : go.transform.TransformDirection(velocity);
+			rigidbody.velocity = space == Space.World ? velocity : go.transform.TransformDirection(velocity);
 		}
 	}
 }

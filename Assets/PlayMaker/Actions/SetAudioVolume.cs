@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Audio)]
 	[Tooltip("Sets the Volume of the Audio Clip played by the AudioSource component on a Game Object.")]
-	public class SetAudioVolume : FsmStateAction
+	public class SetAudioVolume : ComponentAction<AudioSource>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(AudioSource))]
@@ -25,9 +25,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetAudioVolume();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate ()
@@ -38,14 +40,12 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetAudioVolume()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null)
+			if (UpdateCache(go))
 			{
-				var audio = go.GetComponent<AudioSource>();
-				if (audio != null)
-				{
-					if (!volume.IsNone)
-						audio.volume = volume.Value;
-				}
+			    if (!volume.IsNone)
+			    {
+			        audio.volume = volume.Value;
+			    }
 			}
 		}
 	}

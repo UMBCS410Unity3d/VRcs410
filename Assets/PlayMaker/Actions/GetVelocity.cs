@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Gets the Velocity of a Game Object and stores it in a Vector3 Variable or each Axis in a Float Variable. NOTE: The Game Object must have a Rigid Body.")]
-	public class GetVelocity : FsmStateAction
+	public class GetVelocity : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -36,9 +36,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoGetVelocity();
-			
-			if (!everyFrame)
-				Finish();		
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }		
 		}
 
 		public override void OnUpdate()
@@ -48,14 +50,17 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoGetVelocity()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			if (go.GetComponent<Rigidbody>() == null) return;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (!UpdateCache(go))
+		    {
+		        return;
+		    }
 
-			Vector3 velocity = go.GetComponent<Rigidbody>().velocity;
-
-			if (space == Space.Self)
-				velocity = go.transform.InverseTransformDirection(velocity);
+			var velocity = rigidbody.velocity;
+		    if (space == Space.Self)
+		    {
+		        velocity = go.transform.InverseTransformDirection(velocity);
+		    }
 			
 			vector.Value = velocity;
 			x.Value = velocity.x;

@@ -1,6 +1,8 @@
 // (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
 
+using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace HutongGames.PlayMaker.Actions
 {
@@ -52,9 +54,9 @@ namespace HutongGames.PlayMaker.Actions
 		void DoAddComponent()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+			if (go == null) return;
 
-			addedComponent = UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(go, "Assets/PlayMaker/Actions/AddComponent.cs (56,21)", component.Value);
-
+			addedComponent = go.AddComponent(GetType(component.Value));
 		    storeComponent.Value = addedComponent;
 
 			if (addedComponent == null)
@@ -62,5 +64,24 @@ namespace HutongGames.PlayMaker.Actions
 				LogError("Can't add component: " + component.Value);
 			}
 		}
+
+        // Temporary Type Helper for 1.7.8
+        // In Unity 4.x you could use AddComponent(string) leaving off namespace
+        // In Unity 5.x you have to use AddComponent(type)
+        // So old data is missing namespace info and will fail
+        // This is fixed internally in 1.8.0, but we need this fix for 1.7.8
+        // TODO: Remove this fix in 1.8.0
+	    static Type GetType(string name)
+	    {
+	        var type = ReflectionUtils.GetGlobalType(name);
+	        if (type != null) return type;
+
+            type = ReflectionUtils.GetGlobalType("UnityEngine." + name);
+	        if (type != null) return type;
+
+            type = ReflectionUtils.GetGlobalType("HutongGames.PlayMaker." + name);
+	        
+            return type;
+	    }
 	}
 }

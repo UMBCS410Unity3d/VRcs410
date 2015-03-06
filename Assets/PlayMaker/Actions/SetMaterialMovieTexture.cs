@@ -1,6 +1,6 @@
 ﻿// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
 
-#if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_FLASH || UNITY_PS3 || UNITY_BLACKBERRY || UNITY_METRO || UNITY_WP8)
+#if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_FLASH || UNITY_PS3 || UNITY_BLACKBERRY || UNITY_METRO || UNITY_WP8 || UNITY_PSM || UNITY_WEBGL)
 
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Material)]
 	[Tooltip("Sets a named texture in a game object's material to a movie texture.")]
-	public class SetMaterialMovieTexture : FsmStateAction
+	public class SetMaterialMovieTexture : ComponentAction<Renderer>
 	{
 		[Tooltip("The GameObject that the material is applied to.")]
 		[CheckForComponent(typeof(Renderer))]
@@ -57,33 +57,26 @@ namespace HutongGames.PlayMaker.Actions
 			}
 
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null)
+			if (!UpdateCache(go))
 			{
 				return;
 			}
 
-			if (go.GetComponent<Renderer>() == null)
-			{
-				LogError("Missing Renderer!");
-				return;
-			}
-
-			if (go.GetComponent<Renderer>().material == null)
+			if (renderer.material == null)
 			{
 				LogError("Missing Material!");
 				return;
 			}
 
-
 			if (materialIndex.Value == 0)
 			{
-				go.GetComponent<Renderer>().material.SetTexture(namedTex, movie);
+				renderer.material.SetTexture(namedTex, movie);
 			}
-			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+			else if (renderer.materials.Length > materialIndex.Value)
 			{
-				var materials = go.GetComponent<Renderer>().materials;
+				var materials = renderer.materials;
 				materials[materialIndex.Value].SetTexture(namedTex, movie);
-				go.GetComponent<Renderer>().materials = materials;
+				renderer.materials = materials;
 			}
 		}
 	}

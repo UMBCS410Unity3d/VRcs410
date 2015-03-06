@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Forces a Game Object's Rigid Body to wake up.")]
-	public class WakeUp : FsmStateAction
+	public class WakeUp : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -25,11 +25,11 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoWakeUp()
 		{
-			GameObject go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
-			if (go == null) return;
-			if (go.GetComponent<Rigidbody>() == null) return;
-			
-			go.GetComponent<Rigidbody>().WakeUp();
+			var go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
+		    if (UpdateCache(go))
+		    {
+		        rigidbody.WakeUp();
+		    }
 		}
 	}
 }

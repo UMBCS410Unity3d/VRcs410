@@ -6,13 +6,16 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Gets the Mass of a Game Object's Rigid Body.")]
-	public class GetMass : FsmStateAction
+	public class GetMass : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
+        [Tooltip("The GameObject that owns the Rigidbody")]
 		public FsmOwnerDefault gameObject;
-		[RequiredField]
+		
+        [RequiredField]
 		[UIHint(UIHint.Variable)]
+        [Tooltip("Store the mass in a float variable.")]
 		public FsmFloat storeResult;
 
 		public override void Reset()
@@ -30,11 +33,11 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoGetMass()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			if (go.GetComponent<Rigidbody>() == null) return;
-			
-			storeResult.Value = go.GetComponent<Rigidbody>().mass;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+                storeResult.Value = rigidbody.mass;
+		    }
 		}
 	}
 }

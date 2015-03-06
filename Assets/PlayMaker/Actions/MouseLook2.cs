@@ -10,7 +10,7 @@ namespace HutongGames.PlayMaker.Actions
 	/// </summary>
 	[ActionCategory(ActionCategory.Input)]
 	[Tooltip("Rotates a GameObject based on mouse movement. Minimum and Maximum values can be used to constrain the rotation.")]
-	public class MouseLook2 : FsmStateAction
+	public class MouseLook2 : ComponentAction<Rigidbody>
 	{
 		public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 
@@ -71,12 +71,15 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 
-			// Make the rigid body not change rotation
-			// TODO: Original Unity script had this. Expose as option?
-			if (go.GetComponent<Rigidbody>())
-			{
-				go.GetComponent<Rigidbody>().freezeRotation = true;
-			}
+            // Make the rigid body not change rotation			
+            // TODO: Original Unity script had this. Expose as option?
+            if (!UpdateCache(go))
+            {
+                if (rigidbody)
+                {
+                    rigidbody.freezeRotation = true;
+                }
+            }
 
 			DoMouseLook();
 

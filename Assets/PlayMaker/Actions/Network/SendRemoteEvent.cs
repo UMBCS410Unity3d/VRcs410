@@ -1,6 +1,6 @@
 // (c) Copyright HutongGames, LLC 2010-2012. All rights reserved.
 
-#if !(UNITY_FLASH || UNITY_NACL || UNITY_METRO || UNITY_WP8)
+#if !(UNITY_FLASH || UNITY_NACL || UNITY_METRO || UNITY_WP8 || UNITY_WIIU || UNITY_PSM || UNITY_WEBGL)
 
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Network)]
 	[Tooltip("Send an Fsm Event on a remote machine. Uses Unity RPC functions.")]
-	public class SendRemoteEvent : FsmStateAction
+	public class SendRemoteEvent : ComponentAction<NetworkView>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(NetworkView))]
@@ -44,21 +44,19 @@ namespace HutongGames.PlayMaker.Actions
 		void DoRemoteEvent()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-
-			if (go == null || go.GetComponent<NetworkView>() == null)
+			if (!UpdateCache(go))
 			{
 				return;
 			}
 	
 			if (!stringData.IsNone && stringData.Value != "")
 			{
-				go.GetComponent<NetworkView>().RPC("SendRemoteFsmEvent", mode,remoteEvent.Name,stringData.Value);
+				networkView.RPC("SendRemoteFsmEventWithData", mode, remoteEvent.Name,stringData.Value);
 			}
 			else
 			{
-				go.GetComponent<NetworkView>().RPC("SendRemoteFsmEvent", mode, remoteEvent.Name);
-			}
-			
+				networkView.RPC("SendRemoteFsmEvent", mode, remoteEvent.Name);
+			}		
 		}
 	}
 }

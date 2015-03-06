@@ -2,21 +2,38 @@
 Playmaker - Visual scripting for Unity
 ------------------------------------------------------
 
-Realize your creative vision without knowing how to program!
-
 PLEASE BACKUP PROJECTS BEFORE UPDATING PLAYMAKER!!
 
-NOTE: The Playmaker/Asset Store license is for a single user at a time. If multiple people use Playmaker, you need multiple licenses!
+NOTE: The Playmaker/Asset Store license is for a single user. 
+Multiple users need multiple licenses!
 
 ------------------------------------------------------
 INSTALLATION:
 ------------------------------------------------------
 
-To install PlayMaker simply import all files from the unitypackage.
+To install PlayMaker import all files from the unitypackage.
 
-Sample Scenes are now a separate download at www.hutonggames.com/tutorials.html
+Download Sample Scenes at www.hutonggames.com/tutorials.html
 
 NOTE: IMPORT SAMPLE SCENES INTO A NEW PROJECT TO AVOID OVERWRITING YOUR PROJECT FILES!!
+
+------------------------------------------------------
+UNITY 5 NOTES:
+------------------------------------------------------
+
+The 1.7.8 update includes compatibility fixes for Unity 5.
+The 1.8.0 update is currently in beta and includes:
+- Performance enhancements for Unity5.
+- Windows Store support.
+- Lots of new features!
+
+Please email info@hutonggames.com for access to the beta.
+We will need your invoice number and a google/gmail address to send the beta invite to.
+
+NOTE: Unity 5 no longer supports component shortcuts in GameObject (e.g., guiTexture, renderer etc.).
+If you used these properties in Get Property or Set Property actions you will need to re-select the property!
+Problem: If you dragged a GameObject into Set Property and navigated into the guiTexture property, the resulting path is no longer valid in Unity 5.
+Solution: Drag the component itself into the property field (not the GameObject).
 
 ------------------------------------------------------
 UPGRADE NOTES:

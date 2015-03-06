@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Adds a force to a Game Object. Use Vector3 variable and/or Float variables for each axis.")]
-	public class AddForce : FsmStateAction
+	public class AddForce : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -76,14 +76,8 @@ namespace HutongGames.PlayMaker.Actions
 		void DoAddForce()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null)
+			if (!UpdateCache(go))
 			{
-				return;
-			}
-
-			if (go.GetComponent<Rigidbody>() == null)
-			{
-				LogWarning("Missing rigid body: " + go.name);
 				return;
 			}
 
@@ -101,19 +95,17 @@ namespace HutongGames.PlayMaker.Actions
 			{
 				if (!atPosition.IsNone)
 				{
-					go.GetComponent<Rigidbody>().AddForceAtPosition(force, atPosition.Value, forceMode);
+					rigidbody.AddForceAtPosition(force, atPosition.Value, forceMode);
 				}
 				else
 				{
-					go.GetComponent<Rigidbody>().AddForce(force, forceMode);
+					rigidbody.AddForce(force, forceMode);
 				}
 			}
 			else
 			{
-				go.GetComponent<Rigidbody>().AddRelativeForce(force,forceMode);
+				rigidbody.AddRelativeForce(force,forceMode);
 			}
 		}
-
-
 	}
 }

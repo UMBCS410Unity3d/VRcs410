@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Adds torque (rotational force) to a Game Object.")]
-	public class AddTorque : FsmStateAction
+	public class AddTorque : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -70,14 +70,8 @@ namespace HutongGames.PlayMaker.Actions
 		void DoAddTorque()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null)
+			if (!UpdateCache(go))
 			{
-				return;
-			}
-
-			if (go.GetComponent<Rigidbody>() == null)
-			{
-				LogWarning("Missing rigid body: " + go.name);
 				return;
 			}
 
@@ -93,11 +87,11 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (space == Space.World)
 			{
-				go.GetComponent<Rigidbody>().AddTorque(torque, forceMode);
+				rigidbody.AddTorque(torque, forceMode);
 			}
 			else
 			{
-				go.GetComponent<Rigidbody>().AddRelativeTorque(torque, forceMode);
+				rigidbody.AddRelativeTorque(torque, forceMode);
 			}
 		}
 

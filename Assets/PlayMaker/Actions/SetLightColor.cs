@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Lights)]
 	[Tooltip("Sets the Color of a Light.")]
-	public class SetLightColor : FsmStateAction
+	public class SetLightColor : ComponentAction<Light>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Light))]
@@ -25,9 +25,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetLightColor();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -37,17 +39,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetLightColor()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			
-			Light light = go.GetComponent<Light>();
-			if (light == null)
-			{
-				LogError("Missing Light Component!");
-				return;
-			}
-			
-			light.color = lightColor.Value;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+                light.color = lightColor.Value;
+		    }
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Lights)]
 	[Tooltip("Sets the Flare effect used by a Light.")]
-	public class SetLightFlare : FsmStateAction
+	public class SetLightFlare : ComponentAction<Light>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Light))]
@@ -27,17 +27,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetLightRange()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			
-			Light light = go.GetComponent<Light>();
-			if (light == null)
-			{
-				LogError("Missing Light Component!");
-				return;
-			}
-			
-			light.flare = lightFlare;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+                light.flare = lightFlare;
+		    }
 		}
 	}
 }

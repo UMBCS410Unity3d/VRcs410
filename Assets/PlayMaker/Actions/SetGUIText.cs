@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.GUIElement)]
 	[Tooltip("Sets the Text used by the GUIText Component attached to a Game Object.")]
-	public class SetGUIText : FsmStateAction
+	public class SetGUIText : ComponentAction<GUIText>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(GUIText))]
@@ -24,8 +24,10 @@ namespace HutongGames.PlayMaker.Actions
 		{
 			DoSetGUIText();
 
-			if (!everyFrame)
-				Finish();
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -35,9 +37,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetGUIText()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.GetComponent<GUIText>() != null)
-					go.GetComponent<GUIText>().text = text.Value;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+		        guiText.text = text.Value;
+		    }
 		}
 	}
 }

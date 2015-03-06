@@ -7,7 +7,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Tests if a Game Object's Rigid Body is sleeping.")]
-	public class IsSleeping : FsmStateAction
+	public class IsSleeping : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -49,16 +49,12 @@ namespace HutongGames.PlayMaker.Actions
 		void DoIsSleeping()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-
-			if (go == null || go.GetComponent<Rigidbody>() == null)
+			if (UpdateCache(go))
 			{
-				return;
+                var isSleeping = rigidbody.IsSleeping();
+                store.Value = isSleeping;
+                Fsm.Event(isSleeping ? trueEvent : falseEvent);
 			}
-			
-			var isSleeping = go.GetComponent<Rigidbody>().IsSleeping();
-			store.Value = isSleeping;
-
-			Fsm.Event(isSleeping ? trueEvent : falseEvent);
 		}
 	}
 }

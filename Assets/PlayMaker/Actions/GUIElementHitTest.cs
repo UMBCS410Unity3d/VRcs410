@@ -66,7 +66,6 @@ namespace HutongGames.PlayMaker.Actions
 		void DoHitTest()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-
 			if (go == null)
 			{
 				return;
@@ -77,7 +76,6 @@ namespace HutongGames.PlayMaker.Actions
 			if (go != gameObjectCached)
 			{
 				guiElement = go.GetComponent<GUITexture>() ?? (GUIElement) go.GetComponent<GUIText>();
-
 				gameObjectCached = go;
 			}
 

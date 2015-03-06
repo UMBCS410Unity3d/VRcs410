@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Forces a Game Object's Rigid Body to Sleep at least one frame.")]
-	public class Sleep : FsmStateAction
+	public class Sleep : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -25,11 +25,11 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoSleep()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			if (go.GetComponent<Rigidbody>() == null) return;
-			
-			go.GetComponent<Rigidbody>().Sleep();
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+		        rigidbody.Sleep();
+		    }
 		}
 	}
 }

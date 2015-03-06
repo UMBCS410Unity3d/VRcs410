@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Animation)]
 	[Tooltip("Sets the Speed of an Animation. Check Every Frame to update the animation time continuosly, e.g., if you're manipulating a variable that controls animation speed.")]
-	public class SetAnimationSpeed : FsmStateAction
+	public class SetAnimationSpeed : ComponentAction<Animation>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Animation))]
@@ -40,16 +40,12 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoSetAnimationSpeed(GameObject go)
 		{
-			if (go == null) return;
+		    if (!UpdateCache(go))
+		    {
+		        return;
+		    }
 
-			if (go.GetComponent<Animation>() == null)
-			{
-				LogWarning("Missing animation component: " + go.name);
-				return;
-			}
-
-			AnimationState anim = go.GetComponent<Animation>()[animName.Value];
-
+            var anim = animation[animName.Value];
 			if (anim == null)
 			{
 				LogWarning("Missing animation: " + animName.Value);

@@ -1,6 +1,6 @@
 // (c) Copyright HutongGames, LLC 2010-2012. All rights reserved.
 
-#if !(UNITY_FLASH || UNITY_NACL || UNITY_METRO || UNITY_WP8)
+#if !(UNITY_FLASH || UNITY_NACL || UNITY_METRO || UNITY_WP8 || UNITY_WIIU || UNITY_PSM || UNITY_WEBGL)
 
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Network)]
 	[Tooltip("Remove the RPC function calls accociated with a Game Object.\n\nNOTE: The Game Object must have a NetworkView component attached.")]
-	public class NetworkViewRemoveRPCs : FsmStateAction
+	public class NetworkViewRemoveRPCs : ComponentAction<NetworkView>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(NetworkView))]
@@ -29,15 +29,12 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoRemoveRPCsFromViewID()
 		{
-			GameObject targetGo = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (targetGo == null || targetGo.GetComponent<NetworkView>() == null)
+			var targetGo = Fsm.GetOwnerDefaultTarget(gameObject);
+			if (UpdateCache(targetGo))
 			{
-				return;
+                Network.RemoveRPCs(networkView.viewID);
 			}
-			
-			Network.RemoveRPCs(targetGo.GetComponent<NetworkView>().viewID);
 		}
-		
 	}
 }
 

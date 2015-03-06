@@ -7,7 +7,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Tests if a Game Object's Rigid Body is Kinematic.")]
-	public class IsKinematic : FsmStateAction
+	public class IsKinematic : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -49,16 +49,12 @@ namespace HutongGames.PlayMaker.Actions
 		void DoIsKinematic()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-
-			if (go == null || go.GetComponent<Rigidbody>() == null)
+			if (UpdateCache(go))
 			{
-				return;
+                var isKinematic = rigidbody.isKinematic;
+                store.Value = isKinematic;
+                Fsm.Event(isKinematic ? trueEvent : falseEvent);
 			}
-			
-			var isKinematic = go.GetComponent<Rigidbody>().isKinematic;
-			store.Value = isKinematic;
-
-			Fsm.Event(isKinematic ? trueEvent : falseEvent);
 		}
 	}
 }

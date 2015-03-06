@@ -56,13 +56,14 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 
-			if (go.GetComponent<Animation>() == null)
+            var animation = go.GetComponent<Animation>();
+			if (animation == null)
 			{
 				LogWarning("Missing animation component: " + go.name);
 				return;
 			}
 
-			var anim = go.GetComponent<Animation>()[animName.Value];
+			var anim = animation[animName.Value];
 
 			if (anim == null)
 			{

@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Lights)]
 	[Tooltip("Sets the Intensity of a Light.")]
-	public class SetLightIntensity : FsmStateAction
+	public class SetLightIntensity : ComponentAction<Light>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Light))]
@@ -24,9 +24,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetLightIntensity();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -36,17 +38,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetLightIntensity()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			
-			Light light = go.GetComponent<Light>();
-			if (light == null)
-			{
-				LogError("Missing Light Component!");
-				return;
-			}
-			
-			light.intensity = lightIntensity.Value;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+                light.intensity = lightIntensity.Value;
+		    }
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Animation)]
 	[Tooltip("Removes a mixing transform previously added with Add Mixing Transform. If transform has been added as recursive, then it will be removed as recursive. Once you remove all mixing transforms added to animation state all curves become animated again.")]
-	public class RemoveMixingTransform : FsmStateAction
+	public class RemoveMixingTransform : ComponentAction<Animation>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Animation))]
@@ -37,13 +37,12 @@ namespace HutongGames.PlayMaker.Actions
 		void DoRemoveMixingTransform()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null || go.GetComponent<Animation>() == null)
+			if (!UpdateCache(go))
 			{
 				return;
 			}
 
-			var animClip = go.GetComponent<Animation>()[animationName.Value];
-
+			var animClip = animation[animationName.Value];
 			if (animClip == null)
 			{
 				return;

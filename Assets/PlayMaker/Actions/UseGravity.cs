@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Sets whether a Game Object's Rigidy Body is affected by Gravity.")]
-	public class UseGravity : FsmStateAction
+	public class UseGravity : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -29,10 +29,10 @@ namespace HutongGames.PlayMaker.Actions
 		void DoUseGravity()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			if (go.GetComponent<Rigidbody>() == null) return;
-			
-			go.GetComponent<Rigidbody>().useGravity = useGravity.Value;
+		    if (UpdateCache(go))
+		    {
+		        rigidbody.useGravity = useGravity.Value;
+		    }
 		}
 	}
 }

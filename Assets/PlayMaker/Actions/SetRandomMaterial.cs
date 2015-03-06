@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Material)]
 	[Tooltip("Sets a Game Object's material randomly from an array of Materials.")]
-	public class SetRandomMaterial : FsmStateAction
+	public class SetRandomMaterial : ComponentAction<Renderer>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Renderer))]
@@ -32,24 +32,27 @@ namespace HutongGames.PlayMaker.Actions
 			if (materials == null) return;
 			if (materials.Length == 0) return;
 
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (!UpdateCache(go))
+		    {
+		        return;
+		    }
 
-			if (go.GetComponent<Renderer>() == null)
-			{
-				LogError("SetMaterial: Missing Renderer!");
-				return;
-			}
+            if (renderer.material == null)
+            {
+                LogError("Missing Material!");
+                return;
+            }
 
 			if (materialIndex.Value == 0)
 			{
-				go.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)].Value;
+				renderer.material = materials[Random.Range(0, materials.Length)].Value;
 			}
-			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+			else if (renderer.materials.Length > materialIndex.Value)
 			{
-				var newMaterials = go.GetComponent<Renderer>().materials;
+				var newMaterials = renderer.materials;
 				newMaterials[materialIndex.Value] = materials[Random.Range(0, materials.Length)].Value;
-				go.GetComponent<Renderer>().materials = newMaterials;
+				renderer.materials = newMaterials;
 			}		
 		}
 	}

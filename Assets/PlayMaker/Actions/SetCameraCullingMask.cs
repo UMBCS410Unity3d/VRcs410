@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Camera)]
 	[Tooltip("Sets the Culling Mask used by the Camera.")]
-	public class SetCameraCullingMask : FsmStateAction
+	public class SetCameraCullingMask : ComponentAction<Camera>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Camera))]
@@ -47,16 +47,10 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetCameraCullingMask()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-
-			var camera = go.GetComponent<Camera>();
-			if (camera == null)
-			{
-				LogError("Missing Camera Component!");
-				return;
-			}
-
-			camera.cullingMask = ActionHelpers.LayerArrayToLayerMask(cullingMask, invertMask.Value);
+		    if (UpdateCache(go))
+		    {
+                camera.cullingMask = ActionHelpers.LayerArrayToLayerMask(cullingMask, invertMask.Value);
+		    }
 		}
 	}
 }

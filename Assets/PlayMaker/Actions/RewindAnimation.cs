@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Animation)]
 	[Tooltip("Rewinds the named animation.")]
-	public class RewindAnimation : FsmStateAction
+	public class RewindAnimation : ComponentAction<Animation>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Animation))]
@@ -35,18 +35,10 @@ namespace HutongGames.PlayMaker.Actions
 			}
 
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null)
+			if (UpdateCache(go))
 			{
-				return;
+                animation.Rewind(animName.Value);
 			}
-
-			if (go.GetComponent<Animation>() == null)
-			{
-				LogWarning("Missing animation component: " + go.name);
-				return;
-			}
-
-			go.GetComponent<Animation>().Rewind(animName.Value);
 		}
 	}
 }

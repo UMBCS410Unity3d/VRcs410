@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Audio)]
 	[Tooltip("Sets the Pitch of the Audio Clip played by the AudioSource component on a Game Object.")]
-	public class SetAudioPitch : FsmStateAction
+	public class SetAudioPitch : ComponentAction<AudioSource>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(AudioSource))]
@@ -24,9 +24,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetAudioPitch();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 				
 		public override void OnUpdate ()
@@ -37,14 +39,12 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetAudioPitch()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null)
+			if (UpdateCache(go))
 			{
-				var audio = go.GetComponent<AudioSource>();
-				if (audio != null)
-				{
-					if (!pitch.IsNone)
-						audio.pitch = pitch.Value;
-				}
+			    if (!pitch.IsNone)
+			    {
+			        audio.pitch = pitch.Value;
+			    }
 			}
 		}
 	}

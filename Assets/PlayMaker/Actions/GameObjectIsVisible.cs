@@ -7,7 +7,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Logic)]
 	[Tooltip("Tests if a Game Object is visible.")]
-	public class GameObjectIsVisible : FsmStateAction
+	public class GameObjectIsVisible : ComponentAction<Renderer>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Renderer))]
@@ -52,18 +52,13 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoIsVisible()
 		{
-			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			
-			if (go == null || go.GetComponent<Renderer>() == null)
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);			
+			if (UpdateCache(go))
 			{
-				return;
+                var isVisible = renderer.isVisible;
+                storeResult.Value = isVisible;
+                Fsm.Event(isVisible ? trueEvent : falseEvent);
 			}
-			
-			var isVisible = go.GetComponent<Renderer>().isVisible;
-			
-			storeResult.Value = isVisible;
-
-			Fsm.Event(isVisible ? trueEvent : falseEvent);
 		}
 	}
 }

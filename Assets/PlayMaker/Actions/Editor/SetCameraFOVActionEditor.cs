@@ -9,6 +9,9 @@ namespace HutongGames.PlayMakerEditor
     [CustomActionEditor(typeof (SetCameraFOV))]
     public class SetCameraFOVActionEditor : CustomActionEditor
     {
+        private GameObject cachedGameObject;
+        private Camera camera;
+
         public override bool OnGUI()
         {
             return DrawDefaultInspector();
@@ -17,7 +20,6 @@ namespace HutongGames.PlayMakerEditor
         public override void OnSceneGUI()
         {
             var setCameraFOVAction = (SetCameraFOV) target;
-
             if (setCameraFOVAction.fieldOfView.IsNone)
             {
                 return;
@@ -28,16 +30,21 @@ namespace HutongGames.PlayMakerEditor
 
             if (go != null && fov > 0)
             {
-                var cam = go.GetComponent<Camera>();
-                if (cam != null)
+                if (go != cachedGameObject || camera == null)
                 {
-                    var originalFOV = cam.fieldOfView;
-                    cam.fieldOfView = setCameraFOVAction.fieldOfView.Value;
+                    camera = go.GetComponent<Camera>();
+                    cachedGameObject = go;
+                }
+
+                if (camera != null)
+                {
+                    var originalFOV = camera.fieldOfView;
+                    camera.fieldOfView = setCameraFOVAction.fieldOfView.Value;
 
                     Handles.color = new Color(1, 1, 0, .5f);
-                    SceneGUI.DrawCameraFrustrum(cam);
+                    SceneGUI.DrawCameraFrustrum(camera);
 
-                    cam.fieldOfView = originalFOV;
+                    camera.fieldOfView = originalFOV;
                 }
             }
         }

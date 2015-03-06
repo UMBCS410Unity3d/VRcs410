@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Material)]
 	[Tooltip("Sets the Scale of a named texture in a Game Object's Material. Useful for special effects.")]
-	public class SetTextureScale : FsmStateAction
+	public class SetTextureScale : ComponentAction<Renderer>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Renderer))]
@@ -33,9 +33,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetTextureScale();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -45,16 +47,13 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoSetTextureScale()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-
-			if (go.GetComponent<Renderer>() == null)
-			{
-				LogError("Missing Renderer!");
-				return;
-			}
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (!UpdateCache(go))
+		    {
+		        return;
+		    }
 			
-			if (go.GetComponent<Renderer>().material == null)
+			if (renderer.material == null)
 			{
 				LogError("Missing Material!");
 				return;
@@ -62,13 +61,13 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (materialIndex.Value == 0)
 			{
-				go.GetComponent<Renderer>().material.SetTextureScale(namedTexture.Value, new Vector2(scaleX.Value, scaleY.Value));
+				renderer.material.SetTextureScale(namedTexture.Value, new Vector2(scaleX.Value, scaleY.Value));
 			}
-			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+			else if (renderer.materials.Length > materialIndex.Value)
 			{
-				var materials = go.GetComponent<Renderer>().materials;
+				var materials = renderer.materials;
 				materials[materialIndex.Value].SetTextureScale(namedTexture.Value, new Vector2(scaleX.Value, scaleY.Value));
-				go.GetComponent<Renderer>().materials = materials;
+				renderer.materials = materials;
 			}			
 		}
 	}

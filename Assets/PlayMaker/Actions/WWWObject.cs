@@ -1,6 +1,6 @@
 ﻿// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
 
-#if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_FLASH || UNITY_PS3 || UNITY_BLACKBERRY || UNITY_WP8)
+#if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_FLASH || UNITY_PS3 || UNITY_BLACKBERRY || UNITY_WP8 || UNITY_WEBGL)
 
 using UnityEngine;
 

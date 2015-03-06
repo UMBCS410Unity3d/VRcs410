@@ -1,6 +1,6 @@
 // (c) Copyright HutongGames, LLC 2010-2012. All rights reserved.
 
-#if !(UNITY_FLASH || UNITY_NACL || UNITY_METRO || UNITY_WP8)
+#if !(UNITY_FLASH || UNITY_NACL || UNITY_METRO || UNITY_WP8 || UNITY_WIIU || UNITY_PSM || UNITY_WEBGL)
 
 using UnityEngine;
 
@@ -9,7 +9,7 @@ namespace HutongGames.PlayMaker.Actions
 	[ActionCategory(ActionCategory.Network)]
 	[Tooltip("Destroy the object across the network.\n\nThe object is destroyed locally and remotely.\n\n" +
 		"Optionally remove any RPCs accociated with the object.")]
-	public class NetworkDestroy : FsmStateAction
+	public class NetworkDestroy : ComponentAction<NetworkView>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(NetworkView))]
@@ -35,17 +35,17 @@ namespace HutongGames.PlayMaker.Actions
 		void DoDestroy()
 		{
 			// get the target
-			GameObject targetGo = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (targetGo == null || targetGo.GetComponent<NetworkView>() == null)
+			var targetGo = Fsm.GetOwnerDefaultTarget(gameObject);
+			if (!UpdateCache(targetGo))
 			{
 				return;
 			}
 
 			if (removeRPCs.Value)
 			{
-				Network.RemoveRPCs(targetGo.GetComponent<NetworkView>().owner);
+				Network.RemoveRPCs(networkView.owner);
 			}
-			Network.DestroyPlayerObjects(targetGo.GetComponent<NetworkView>().owner);		
+			Network.DestroyPlayerObjects(networkView.owner);		
 		}		
 	}
 }

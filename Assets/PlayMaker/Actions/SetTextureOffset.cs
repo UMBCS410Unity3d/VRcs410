@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Material)]
 	[Tooltip("Sets the Offset of a named texture in a Game Object's Material. Useful for scrolling texture effects.")]
-	public class SetTextureOffset : FsmStateAction
+	public class SetTextureOffset : ComponentAction<Renderer>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Renderer))]
@@ -34,9 +34,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetTextureOffset();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -46,16 +48,13 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoSetTextureOffset()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-
-			if (go.GetComponent<Renderer>() == null)
-			{
-				LogError("Missing Renderer!");
-				return;
-			}
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (!UpdateCache(go))
+		    {
+		        return;
+		    }
 			
-			if (go.GetComponent<Renderer>().material == null)
+			if (renderer.material == null)
 			{
 				LogError("Missing Material!");
 				return;
@@ -63,13 +62,13 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (materialIndex.Value == 0)
 			{
-				go.GetComponent<Renderer>().material.SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
+				renderer.material.SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
 			}
-			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+			else if (renderer.materials.Length > materialIndex.Value)
 			{
-				var materials = go.GetComponent<Renderer>().materials;
+				var materials = renderer.materials;
 				materials[materialIndex.Value].SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
-				go.GetComponent<Renderer>().materials = materials;
+				renderer.materials = materials;
 			}
 		}
 

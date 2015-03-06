@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Lights)]
 	[Tooltip("Sets the Texture projected by a Light.")]
-	public class SetLightCookie : FsmStateAction
+	public class SetLightCookie : ComponentAction<Light>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Light))]
@@ -21,26 +21,17 @@ namespace HutongGames.PlayMaker.Actions
 
 		public override void OnEnter()
 		{
-			DoSetLightRange();
+			DoSetLightCookie();
 			Finish();
 		}
 	
-		void DoSetLightRange()
+		void DoSetLightCookie()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null)
+			if (UpdateCache(go))
 			{
-				return;
+                light.cookie = lightCookie.Value;
 			}
-			
-			var light = go.GetComponent<Light>();
-			if (light == null)
-			{
-				LogError("Missing Light Component!");
-				return;
-			}
-			
-			light.cookie = lightCookie.Value;
 		}
 	}
 }

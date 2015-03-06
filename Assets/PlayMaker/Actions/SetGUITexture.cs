@@ -6,11 +6,14 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.GUIElement)]
 	[Tooltip("Sets the Texture used by the GUITexture attached to a Game Object.")]
-	public class SetGUITexture : FsmStateAction
+	public class SetGUITexture : ComponentAction<GUITexture>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(GUITexture))]
-		public FsmOwnerDefault gameObject;
+		[Tooltip("The GameObject that owns the GUITexture.")]
+        public FsmOwnerDefault gameObject;
+
+        [Tooltip("Texture to apply.")]
 		public FsmTexture texture;
 		
 		public override void Reset()
@@ -22,9 +25,9 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.GetComponent<GUITexture>() != null)
+			if (UpdateCache(go))
 			{
-				go.GetComponent<GUITexture>().texture = texture.Value;
+				guiTexture.texture = texture.Value;
 			}
 			
 			Finish();

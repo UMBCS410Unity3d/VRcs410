@@ -8,7 +8,7 @@ namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory(ActionCategory.Material)]
     [Tooltip("Get a material at index on a gameObject and store it in a variable")]
-    public class GetMaterial : FsmStateAction
+    public class GetMaterial : ComponentAction<Renderer>
     {
 	    [RequiredField]
 	    [CheckForComponent(typeof(Renderer))]
@@ -43,39 +43,33 @@ namespace HutongGames.PlayMaker.Actions
 	    void DoGetMaterial()
 	    {
 		    var go = Fsm.GetOwnerDefaultTarget(gameObject);
-		    if (go == null)
+		    if (!UpdateCache(go))
 		    {
-			    return;
-		    }
-
-		    if (go.GetComponent<Renderer>() == null)
-		    {
-			    LogError("Missing Renderer!");
 			    return;
 		    }
 		
 		    if (materialIndex.Value == 0 && !getSharedMaterial)
 		    {
-			    material.Value = go.GetComponent<Renderer>().material;
+			    material.Value = renderer.material;
 		    }
 		
 		    else if(materialIndex.Value == 0 && getSharedMaterial)
 		    {
-			    material.Value = go.GetComponent<Renderer>().sharedMaterial;
+			    material.Value = renderer.sharedMaterial;
 		    }
 	
-		    else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value && !getSharedMaterial)
+		    else if (renderer.materials.Length > materialIndex.Value && !getSharedMaterial)
 		    {
-			    var materials = go.GetComponent<Renderer>().materials;
+			    var materials = renderer.materials;
 			    material.Value = materials[materialIndex.Value];
-			    go.GetComponent<Renderer>().materials = materials;
+			    renderer.materials = materials;
 		    }
 
-		    else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value && getSharedMaterial)
+		    else if (renderer.materials.Length > materialIndex.Value && getSharedMaterial)
 		    {
-			    var materials = go.GetComponent<Renderer>().sharedMaterials;
+			    var materials = renderer.sharedMaterials;
 			    material.Value = materials[materialIndex.Value];
-			    go.GetComponent<Renderer>().sharedMaterials = materials;
+			    renderer.sharedMaterials = materials;
 		    }
 	    }
     }

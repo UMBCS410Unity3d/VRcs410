@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Camera)]
 	[Tooltip("Sets the Background Color used by the Camera.")]
-	public class SetBackgroundColor : FsmStateAction
+	public class SetBackgroundColor : ComponentAction<Camera>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Camera))]
@@ -25,9 +25,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetBackgroundColor();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -37,17 +39,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetBackgroundColor()
 		{
-			GameObject go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
-			if (go == null) return;
-			
-			Camera camera = go.GetComponent<Camera>();
-			if (camera == null)
-			{
-				LogError("Missing Camera Component!");
-				return;
-			}
-			
-			camera.backgroundColor = backgroundColor.Value;
+            var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+                camera.backgroundColor = backgroundColor.Value;
+		    }
 		}
 	}
 }

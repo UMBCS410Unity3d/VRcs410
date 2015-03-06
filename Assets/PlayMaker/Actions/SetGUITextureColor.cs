@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.GUIElement)]
 	[Tooltip("Sets the Color of the GUITexture attached to a Game Object.")]
-	public class SetGUITextureColor : FsmStateAction
+	public class SetGUITextureColor : ComponentAction<GUITexture>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(GUITexture))]
@@ -40,9 +40,9 @@ namespace HutongGames.PlayMaker.Actions
 		void DoSetGUITextureColor()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.GetComponent<GUITexture>() != null)
+			if (UpdateCache(go))
 			{
-				go.GetComponent<GUITexture>().color = color.Value;
+				guiTexture.color = color.Value;
 			}
 		}
 	}

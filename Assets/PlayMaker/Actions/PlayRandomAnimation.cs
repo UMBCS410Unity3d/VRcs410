@@ -7,7 +7,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Animation)]
 	[Tooltip("Plays a Random Animation on a Game Object. You can set the relative weight of each animation to control how often they are selected.")]
-	public class PlayRandomAnimation : FsmStateAction
+	public class PlayRandomAnimation : ComponentAction<Animation>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Animation))]
@@ -74,7 +74,7 @@ namespace HutongGames.PlayMaker.Actions
 		void DoPlayAnimation(string animName)
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null || string.IsNullOrEmpty(animName))
+			if (!UpdateCache(go))
 			{
 				Finish();
 				return;
@@ -87,14 +87,7 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 
-			if (go.GetComponent<Animation>() == null)
-			{
-				LogWarning("Missing animation component!");
-				Finish();
-				return;
-			}
-
-			anim = go.GetComponent<Animation>()[animName];
+			anim = animation[animName];
 
 			if (anim == null)
 			{
@@ -106,11 +99,11 @@ namespace HutongGames.PlayMaker.Actions
 			var time = blendTime.Value;
 			if (time < 0.001f)
 			{
-				go.GetComponent<Animation>().Play(animName, playMode);
+				animation.Play(animName, playMode);
 			}
 			else
 			{
-				go.GetComponent<Animation>().CrossFade(animName, time, playMode);
+				animation.CrossFade(animName, time, playMode);
 			}
 
 			prevAnimtTime = anim.time;
@@ -146,10 +139,9 @@ namespace HutongGames.PlayMaker.Actions
 
 		void StopAnimation()
 		{
-			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.GetComponent<Animation>() != null)
+			if (animation != null)
 			{
-				go.GetComponent<Animation>().Stop(anim.name);
+				animation.Stop(anim.name);
 			}
 		}
 

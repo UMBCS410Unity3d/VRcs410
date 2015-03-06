@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Effects)]
 	[Tooltip("Turns a Game Object on/off in a regular repeating pattern.")]
-	public class Blink : FsmStateAction
+	public class Blink : ComponentAction<Renderer>
 	{
 		[RequiredField]
         [Tooltip("The GameObject to blink on/off.")]
@@ -80,12 +80,17 @@ namespace HutongGames.PlayMaker.Actions
 		void UpdateBlinkState(bool state)
 		{
 			var go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
-			if (go == null) return;
-			
+		    if (go == null)
+		    {
+		        return;
+		    }
+
 			if (rendererOnly)
 			{
-				if (go.GetComponent<Renderer>() != null)
-					go.GetComponent<Renderer>().enabled = state;
+                if(UpdateCache(go))
+			    {
+			        renderer.enabled = state;
+			    }
 			}
 			else
             {

@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Sets the Mass of a Game Object's Rigid Body.")]
-	public class SetMass : FsmStateAction
+	public class SetMass : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -30,11 +30,11 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoSetMass()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			if (go.GetComponent<Rigidbody>() == null) return;
-			
-			go.GetComponent<Rigidbody>().mass = mass.Value;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+		        rigidbody.mass = mass.Value;
+		    }
 		}
 	}
 }

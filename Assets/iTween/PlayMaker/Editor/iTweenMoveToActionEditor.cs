@@ -30,10 +30,10 @@ public class iTweenMoveToActionEditor : CustomActionEditor
 
         if (iTween.transforms.Length >= 2)
         {
-#if UNITY_4_3 || UNITY_4_5
-            Undo.RecordObject(target.Owner, Strings.Command_Adjust_iTween_Path);
-#else
+#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_2
             Undo.SetSnapshotTarget(target.Owner, Strings.Command_Adjust_iTween_Path);
+#else
+            Undo.RecordObject(target.Owner, Strings.Command_Adjust_iTween_Path);
 #endif
             var tempVct3 = new Vector3[iTween.transforms.Length];
             for (var i = 0; i < iTween.transforms.Length; i++)
@@ -80,10 +80,11 @@ public class iTweenMoveToActionEditor : CustomActionEditor
 
             Handles.Label(tempVct3[0], string.Format(Strings.iTween_Path_Editing_Label_Begin, fsm.Name));
             Handles.Label(tempVct3[tempVct3.Length - 1], string.Format(Strings.iTween_Path_Editing_Label_End, fsm.Name));
-                        
+
             if (GUI.changed)
             {
                 FsmEditor.EditingActions();
+                FsmEditor.Repaint(true);
             }
         }
    

@@ -51,7 +51,7 @@ namespace HutongGames.PlayMaker.Actions
 			getName.Value = SystemInfo.deviceName; //iPhoneSettings.name;
 			getModel.Value = SystemInfo.deviceModel; //iPhoneSettings.model;
 			getSystemName.Value = SystemInfo.operatingSystem; //iPhoneSettings.systemName;
-			getGeneration.Value = iPhone.generation.ToString();
+			getGeneration.Value = UnityEngine.iOS.Device.generation.ToString();
 #endif
             Finish();
 		}

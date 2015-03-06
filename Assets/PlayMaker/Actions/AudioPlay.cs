@@ -40,8 +40,8 @@ namespace HutongGames.PlayMaker.Actions
 			if (go != null)
 			{
 				// cache the AudioSource component
-				
-				audio = go.GetComponent<AudioSource>();
+
+			    audio = go.GetComponent<AudioSource>();
 				if (audio != null)
 				{
 					var audioClip = oneShotClip.Value as AudioClip;

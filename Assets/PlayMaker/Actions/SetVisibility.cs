@@ -7,8 +7,8 @@ namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory(ActionCategory.Material)]
     [Tooltip("Sets the visibility of a GameObject. Note: this action sets the GameObject Renderer's enabled state.")]
-	public class SetVisibility : FsmStateAction
-	{
+	public class SetVisibility : ComponentAction<Renderer>
+    {
 		[RequiredField]
 		[CheckForComponent(typeof(Renderer))]
 		public FsmOwnerDefault gameObject;
@@ -44,28 +44,23 @@ namespace HutongGames.PlayMaker.Actions
 
         void DoSetVisibility(GameObject go)
 		{
-			if (go == null)
-			{
-				return;
-			}
-
-            if (go.GetComponent<Renderer>() == null)
-            {   LogError("Missing Renderer!");
-                return; 
+            if (!UpdateCache(go))
+            {
+                return;
             }
 
             // remember initial visibility
-            initialVisibility = go.GetComponent<Renderer>().enabled;
+            initialVisibility = renderer.enabled;
 
             // if 'toggle' is not set, simply sets visibility to new value
             if (toggle.Value == false) 
             {
-                go.GetComponent<Renderer>().enabled = visible.Value;
+                renderer.enabled = visible.Value;
                 return;
             }
 			
             // otherwise, toggles the visibility
-            go.GetComponent<Renderer>().enabled = !go.GetComponent<Renderer>().enabled;
+            renderer.enabled = !renderer.enabled;
 		}
 
         public override void OnExit()
@@ -78,11 +73,9 @@ namespace HutongGames.PlayMaker.Actions
 
         void ResetVisibility()
         {
-            // uses the FSM to get the target object and resets its visibility
-            var go = Fsm.GetOwnerDefaultTarget(gameObject);
-            if (go != null && go.GetComponent<Renderer>() != null)
+            if (renderer != null)
             {
-            	go.GetComponent<Renderer>().enabled = initialVisibility;
+            	renderer.enabled = initialVisibility;
             }
         }
 

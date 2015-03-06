@@ -278,10 +278,18 @@ static class PlayMakerMainMenu
 		AssetStore.Open("1z");
 	}*/
 
-	[MenuItem(MenuRoot + "About PlayMaker...", false, 46)]
-	public static void OpenAboutWindow()
-	{
-		EditorWindow.GetWindow<AboutWindow>(true);
+
+
+    [MenuItem(MenuRoot + "Upgrade Guide", false, 46)]
+    public static void OpenUpgradeGuide()
+    {
+        EditorWindow.GetWindow<PlayMakerUpgradeGuide>(true);
+    }
+
+    [MenuItem(MenuRoot + "About PlayMaker...", false, 47)]
+    public static void OpenAboutWindow()
+    {
+        EditorWindow.GetWindow<AboutWindow>(true);
     }
 
 

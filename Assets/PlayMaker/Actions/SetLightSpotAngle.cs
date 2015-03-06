@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Lights)]
 	[Tooltip("Sets the Spot Angle of a Light.")]
-	public class SetLightSpotAngle : FsmStateAction
+	public class SetLightSpotAngle : ComponentAction<Light>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Light))]
@@ -24,9 +24,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetLightRange();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -36,17 +38,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetLightRange()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			
-			Light light = go.GetComponent<Light>();
-			if (light == null)
-			{
-				LogError("Missing Light Component!");
-				return;
-			}
-			
-			light.spotAngle = lightSpotAngle.Value;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+                light.spotAngle = lightSpotAngle.Value;
+		    }
 		}
 	}
 }

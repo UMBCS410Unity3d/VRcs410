@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Material)]
 	[Tooltip("Sets a named float in a game object's material.")]
-	public class SetMaterialFloat : FsmStateAction
+	public class SetMaterialFloat : ComponentAction<Renderer>
 	{
 		[Tooltip("The GameObject that the material is applied to.")]
 		[CheckForComponent(typeof(Renderer))]
@@ -63,15 +63,12 @@ namespace HutongGames.PlayMaker.Actions
 			}
 			
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-
-			if (go.GetComponent<Renderer>() == null)
-			{
-				LogError("Missing Renderer!");
-				return;
-			}
+		    if (!UpdateCache(go))
+		    {
+		        return;
+		    }
 			
-			if (go.GetComponent<Renderer>().material == null)
+			if (renderer.material == null)
 			{
 				LogError("Missing Material!");
 				return;
@@ -79,13 +76,13 @@ namespace HutongGames.PlayMaker.Actions
 			
 			if (materialIndex.Value == 0)
 			{
-				go.GetComponent<Renderer>().material.SetFloat(namedFloat.Value, floatValue.Value);
+				renderer.material.SetFloat(namedFloat.Value, floatValue.Value);
 			}
-			else if (go.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+			else if (renderer.materials.Length > materialIndex.Value)
 			{
-				var materials = go.GetComponent<Renderer>().materials;
+				var materials = renderer.materials;
 				materials[materialIndex.Value].SetFloat(namedFloat.Value, floatValue.Value);
-				go.GetComponent<Renderer>().materials = materials;			
+				renderer.materials = materials;			
 			}	
 		}
 	}

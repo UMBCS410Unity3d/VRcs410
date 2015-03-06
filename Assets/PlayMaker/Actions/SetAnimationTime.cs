@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Animation)]
 	[Tooltip("Sets the current Time of an Animation, Normalize time means 0 (start) to 1 (end); useful if you don't care about the exact time. Check Every Frame to update the time continuosly.")]
-	public class SetAnimationTime : FsmStateAction
+	public class SetAnimationTime : ComponentAction<Animation>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Animation))]
@@ -42,18 +42,14 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoSetAnimationTime(GameObject go)
 		{
-			if (go == null) return;
+		    if (!UpdateCache(go))
+		    {
+		        return;
+		    }
 
-			if (go.GetComponent<Animation>() == null)
-			{
-				LogWarning("Missing animation component: " + go.name);
-				return;
-			}
+			animation.Play(animName.Value);
 
-			go.GetComponent<Animation>().Play(animName.Value);
-
-			AnimationState anim = go.GetComponent<Animation>()[animName.Value];
-
+			var anim = animation[animName.Value];
 			if (anim == null)
 			{
 				LogWarning("Missing animation: " + animName.Value);
@@ -70,8 +66,10 @@ namespace HutongGames.PlayMaker.Actions
 			}
 			
 			// TODO: need to do this?
-			if (everyFrame)
-				anim.speed = 0;
+		    if (everyFrame)
+		    {
+		        anim.speed = 0;
+		    }
 		}
 
 	}

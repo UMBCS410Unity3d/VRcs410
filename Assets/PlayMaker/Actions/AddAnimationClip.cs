@@ -50,25 +50,26 @@ namespace HutongGames.PlayMaker.Actions
 		void DoAddAnimationClip()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null || go.GetComponent<Animation>() == null)
+			if (go == null)
 			{
 				return;
 			}
 
 			var animClip = animationClip.Value as AnimationClip;
-
 			if (animClip == null)
 			{
 				return;
 			}
 
+            var animation = go.GetComponent<Animation>();
+
 			if (firstFrame.Value == 0 && lastFrame.Value == 0)
 			{
-				go.GetComponent<Animation>().AddClip(animClip, animationName.Value);
+				animation.AddClip(animClip, animationName.Value);
 			}
 			else
 			{
-				go.GetComponent<Animation>().AddClip(animClip, animationName.Value, firstFrame.Value, lastFrame.Value, addLoopFrame.Value);
+				animation.AddClip(animClip, animationName.Value, firstFrame.Value, lastFrame.Value, addLoopFrame.Value);
 			}
 		}
 	}

@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Lights)]
 	[Tooltip("Sets the strength of the shadows cast by a Light.")]
-	public class SetShadowStrength : FsmStateAction
+	public class SetShadowStrength : ComponentAction<Light>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Light))]
@@ -36,17 +36,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetShadowStrength()
 		{
-			GameObject go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null) return;
-			
-			Light light = go.GetComponent<Light>();
-			if (light == null)
-			{
-				LogError("Missing Light Component!");
-				return;
-			}
-			
-			light.shadowStrength = shadowStrength.Value;
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+		        light.shadowStrength = shadowStrength.Value;
+		    }
 		}
 	}
 }

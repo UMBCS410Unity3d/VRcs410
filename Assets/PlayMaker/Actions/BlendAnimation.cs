@@ -64,14 +64,15 @@ namespace HutongGames.PlayMaker.Actions
 				return;
 			}
 
-			if (go.GetComponent<Animation>() == null)
+            var animation = go.GetComponent<Animation>();
+			if (animation == null)
 			{
 				LogWarning("Missing Animation component on GameObject: " + go.name);
 				Finish();
 				return;
 			}
 
-			var anim = go.GetComponent<Animation>()[animName.Value];
+			var anim = animation[animName.Value];
 
 			if (anim == null)
 			{
@@ -81,7 +82,7 @@ namespace HutongGames.PlayMaker.Actions
 			}
 
 			var timeValue = time.Value;
-			go.GetComponent<Animation>().Blend(animName.Value, targetWeight.Value, timeValue);
+			animation.Blend(animName.Value, targetWeight.Value, timeValue);
 			
 			// TODO: doesn't work well with scaled time
 			if (finishEvent != null)

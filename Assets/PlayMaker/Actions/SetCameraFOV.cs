@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Camera)]
 	[Tooltip("Sets Field of View used by the Camera.")]
-	public class SetCameraFOV : FsmStateAction
+	public class SetCameraFOV : ComponentAction<Camera>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Camera))]
@@ -25,9 +25,11 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			DoSetCameraFOV();
-			
-			if (!everyFrame)
-				Finish();
+
+		    if (!everyFrame)
+		    {
+		        Finish();
+		    }
 		}
 		
 		public override void OnUpdate()
@@ -37,18 +39,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		void DoSetCameraFOV()
 		{
-			GameObject go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
-			if (go == null) return;
-			
-			Camera camera = go.GetComponent<Camera>();
-			
-			if (camera == null)
-			{
-				LogError("Missing Camera Component!");
-				return;
-			}
-			
-			camera.fieldOfView = fieldOfView.Value;
+		    var go = Fsm.GetOwnerDefaultTarget(gameObject);
+		    if (UpdateCache(go))
+		    {
+                camera.fieldOfView = fieldOfView.Value;
+		    }
 		}
 	}
 }

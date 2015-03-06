@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.Physics)]
 	[Tooltip("Applies a force to a Game Object that simulates explosion effects. The explosion force will fall off linearly with distance. Hint: Use the Explosion Action instead to apply an explosion force to all objects in a blast radius.")]
-	public class AddExplosionForce : FsmStateAction
+	public class AddExplosionForce : ComponentAction<Rigidbody>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(Rigidbody))]
@@ -66,12 +66,12 @@ namespace HutongGames.PlayMaker.Actions
 		void DoAddExplosionForce()
 		{
 			var go = gameObject.OwnerOption == OwnerDefaultOption.UseOwner ? Owner : gameObject.GameObject.Value;
-            if (go == null || center == null || go.GetComponent<Rigidbody>() == null)
+            if (center == null || !UpdateCache(go))
 			{
 			    return;
 			}
-
-			go.GetComponent<Rigidbody>().AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
+            
+            rigidbody.AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
 		}
 	}
 }

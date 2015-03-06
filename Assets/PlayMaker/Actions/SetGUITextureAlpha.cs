@@ -6,7 +6,7 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory(ActionCategory.GUIElement)]
 	[Tooltip("Sets the Alpha of the GUITexture attached to a Game Object. Useful for fading GUI elements in/out.")]
-	public class SetGUITextureAlpha : FsmStateAction
+	public class SetGUITextureAlpha : ComponentAction<GUITexture>
 	{
 		[RequiredField]
 		[CheckForComponent(typeof(GUITexture))]
@@ -40,10 +40,10 @@ namespace HutongGames.PlayMaker.Actions
 		void DoGUITextureAlpha()
 		{
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go != null && go.GetComponent<GUITexture>() != null)
+			if (UpdateCache(go))
 			{
-				Color color = go.GetComponent<GUITexture>().color;
-				go.GetComponent<GUITexture>().color = new Color(color.r, color.g, color.b, alpha.Value);
+				var color = guiTexture.color;
+				guiTexture.color = new Color(color.r, color.g, color.b, alpha.Value);
 			}			
 		}
 	}
