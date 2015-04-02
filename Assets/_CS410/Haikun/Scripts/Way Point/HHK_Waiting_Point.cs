@@ -24,7 +24,8 @@ public class HHK_Waiting_Point : MonoBehaviour
 	public int max_len_of_line = 5;
 
 	// interval of each charactors
-	public float interval = 2.0f;
+	float interval = 1.2f;
+	float intervalRandomScale = 0.3f;
 
 	public bool change_color_for_test = false;
 
@@ -56,11 +57,15 @@ public class HHK_Waiting_Point : MonoBehaviour
 	{
 		if (charactors.Count < max_len_of_line)
 		{
-			charactors.Add(role);
+			if (!charactors.Contains(role))
+			{
+				charactors.Add(role);
+			}
 			// change color for test
 			if (change_color_for_test)
 				role.GetComponent<Renderer>().material.color = Color.red;
 			return true;
+		
 		}
 		return false;
 	}
@@ -74,6 +79,14 @@ public class HHK_Waiting_Point : MonoBehaviour
 			role.GetComponent<Renderer>().material.color = Color.blue;
 	}
 
+	// who is at the given index
+	public HHK_Role_Tags At_Index(int index)
+	{
+		if (index < 0)
+			return null;
+		return charactors[index];
+	}
+
 	// get who in this place
 	public HHK_Role_Tags[] Get_Who_In_This_Place()
 	{
@@ -83,13 +96,19 @@ public class HHK_Waiting_Point : MonoBehaviour
 	// get the position of the currently, for the input charactors
 	public Vector3 Get_My_Position(HHK_Role_Tags role)
 	{
+
 		Vector3 ret = gameObject.transform.position;
-
-		// get the index of the list for the input charactor
-		int i = Get_My_Index(role);
+		int i = charactors.IndexOf(role);
 		ret += (-gameObject.transform.forward) * interval * i;
-
+		
+		// randomly x, z
+		Vector2 v2 = Random.insideUnitCircle * interval * intervalRandomScale;
+		ret.x += v2.x;
+		ret.z += v2.y;
+		
 		return ret;
+
+
 	}
 
 	// get the index of the line

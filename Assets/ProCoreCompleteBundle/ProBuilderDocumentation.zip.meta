@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2dfbcfc3c1df08248b16bf0ae4499ed5
+labels:
+- geometry
+- build
+- 3d
+- model
+- edit
+- vertex
+- face
+- uv
+- building
+- vertices
+- csg
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

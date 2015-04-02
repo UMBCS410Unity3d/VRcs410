@@ -26,6 +26,10 @@ public class HHK_Way_Point_Level_2 : MonoBehaviour {
 	public float force_to_leave_time_limit_scale = 2.0f;
 	float force_to_leave_time_limit; // just for fix the bugs;
 
+	// play action in this spot
+	public string actionName = "stand to sit";
+	public string actionNameExit = "sit to stand";
+
 	// next place the AI should go
 	public HHK_Way_Point_Level_1 next_place;
 
@@ -80,9 +84,9 @@ public class HHK_Way_Point_Level_2 : MonoBehaviour {
 	{
 		return Join_To_This_Place(role);
 	}
-	
+
 	// when a charactor leave, it will be removed from the list of Charactors
-	bool Leave_From_This_Place(HHK_Role_Tags role)
+	public bool Leave_From_This_Place(HHK_Role_Tags role)
 	{
 		if (charactor == role)
 		{

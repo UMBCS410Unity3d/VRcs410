@@ -25,6 +25,9 @@ public class HHK_Way_Point_Level_1 : MonoBehaviour
 	// list of the waitting point
 	public HHK_Waiting_Point waittingPoint;
 
+	// secrete this location 
+	public bool secreted = false;
+
 	// list of the Charactors, who are staying in this area currently.
 	List<HHK_Role_Tags> charactors;
 
@@ -44,6 +47,25 @@ public class HHK_Way_Point_Level_1 : MonoBehaviour
 	
 	}
 
+	// find all the location
+	public static HHK_Way_Point_Level_1[] FindAllPlace(bool include_secreted = false)
+	{
+		// find all the wp1
+		HHK_Way_Point_Level_1[] wp1s = GameObject.FindObjectsOfType<HHK_Way_Point_Level_1>();
+
+		// if included secreted, return all.
+		if (include_secreted)
+			return wp1s;
+
+		// else just return un-secreted places.
+		List<HHK_Way_Point_Level_1> list = new List<HHK_Way_Point_Level_1>();
+		for(int i=0; i<wp1s.Length; i++)
+		{
+			if (!wp1s[i].secreted)
+				list.Add(wp1s[i]);
+		}
+		return list.ToArray();
+	}
 
 
 	// check is the charactor in this place

@@ -1,4 +1,4 @@
-﻿// Haikun Huang
+// Haikun Huang
 using UnityEngine;
 using System.Collections;
 
@@ -27,7 +27,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 
 
 	// some speed
-	float speed_walk = 1.8f;
+	public float speed_walk = 1.8f;
 	public float speed_run = 3.5f;
 
 	// some place
@@ -59,7 +59,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 	{
 
 		// idle at beginning
-		role_controller.Play_Animation(HHK_Role_Controller.Idle);
+		role_controller.Play(HHK_Role_Controller.Idle);
 	
 	}
 	
@@ -109,7 +109,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 		// set the destination
 		agent.SetDestination(place.transform.position);
 		// play animation.
-		role_controller.Play_Animation(HHK_Role_Controller.Run);
+		role_controller.Play(HHK_Role_Controller.Run);
 		agent.speed = speed_run;
 
 	}
@@ -135,7 +135,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// set the destination
 			agent.SetDestination(spot.transform.position);
 			// play animation.
-			role_controller.Play_Animation(HHK_Role_Controller.Walk);
+			role_controller.Play(HHK_Role_Controller.Walk);
 			agent.speed = speed_walk;
 		}
 		// go to the waiting point
@@ -159,7 +159,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(waiting_point.Get_My_Position(role));
 				// play animation.
-				role_controller.Play_Animation(HHK_Role_Controller.Walk);
+				role_controller.Play(HHK_Role_Controller.Walk);
 				agent.speed = speed_walk;
 			}
 			// switch to walking
@@ -209,7 +209,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			return;
 		}
 		
-		// if not ready and I am not in this spot, witch to the in spot state
+		// if not ready and I am not in this spot, switch to the in spot state
 		if (!spot.Is_Ready())
 		{
 			if (!spot.Is_In_This_Place(role))
@@ -231,7 +231,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// stop
 			// agent.Stop();
 			// play animation.
-			role_controller.Play_Animation(HHK_Role_Controller.Idle);
+			role_controller.Play(HHK_Role_Controller.Idle);
 
 		}
 	}
@@ -240,7 +240,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 	// leave when the time out, switch to the looking for wp 1
 	void In_Spot()
 	{
-
+		role_controller.Play(HHK_Role_Controller.Idle);
 		// if not ready and I am not in this spot, witch to the in spot state
 		if (!spot.Is_Ready())
 		{
@@ -270,7 +270,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(place.transform.position);
 				// play animation.
-				role_controller.Play_Animation(HHK_Role_Controller.Run);
+				role_controller.Play(HHK_Role_Controller.Run);
 				agent.speed = speed_run;
 			}
 			else
@@ -292,14 +292,14 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			return;
 		}
 		
-		// if at the right position, switch to the in spot state
+		// if at the right position, switch to the in waiting line
 		if (agent.desiredVelocity.magnitude <= speed_for_stop_limit)
 		{
 			state = STATE.In_Waiting_Line;
 			// stop
 			// agent.Stop();
 			// play animation.
-			role_controller.Play_Animation(HHK_Role_Controller.Idle);
+			role_controller.Play(HHK_Role_Controller.Idle);
 		}
 		
 		// keep checking the new waiting index of the line, move to the new position
@@ -312,7 +312,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// set the destination
 			agent.SetDestination(waiting_point.Get_My_Position(role));
 			// play animation.
-			role_controller.Play_Animation(HHK_Role_Controller.Walk);
+			role_controller.Play(HHK_Role_Controller.Walk);
 			agent.speed = speed_walk;
 		}
 		
@@ -331,7 +331,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(spot.transform.position);
 				// play animation
-				role_controller.Play_Animation(HHK_Role_Controller.Walk);
+				role_controller.Play(HHK_Role_Controller.Walk);
 				agent.speed = speed_walk;
 			}
 		}
@@ -342,7 +342,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 	// keep checking any availabe spot
 	void In_the_Waiting_Line()
 	{
-
+		role_controller.Play(HHK_Role_Controller.Idle);
 		if (!waiting_point)
 		{
 			state = STATE.Looking_WP_1;
@@ -363,7 +363,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// set the destination
 			agent.SetDestination(waiting_point.Get_My_Position(role));
 			// play animation.
-			role_controller.Play_Animation(HHK_Role_Controller.Walk);
+			role_controller.Play(HHK_Role_Controller.Walk);
 			agent.speed = speed_walk;
 			
 		}
@@ -383,7 +383,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(spot.transform.position);
 				// play animation
-				role_controller.Play_Animation(HHK_Role_Controller.Walk);
+				role_controller.Play(HHK_Role_Controller.Walk);
 				agent.speed = speed_walk;
 			}
 		}
