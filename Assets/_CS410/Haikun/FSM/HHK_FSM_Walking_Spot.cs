@@ -20,17 +20,17 @@ public class HHK_FSM_Walking_Spot : HHK_FSM_Action
 		switch (moveType) {
 		case HHK_FSM_Walking_NPC_Variables.MOVETYPE.Run:
 			// play animation.
-			npc.role_controller.CrossFade (HHK_Role_Controller.Run);
+			npc.role_controller.CrossFade (HHK_Role_Controller.AnimName.motion);
 			npc.agent.speed = npc.speed_run;
 			break;
 		case HHK_FSM_Walking_NPC_Variables.MOVETYPE.Walk:
 			// play animation.
-			npc.role_controller.CrossFade (HHK_Role_Controller.Walk);
+			npc.role_controller.CrossFade (HHK_Role_Controller.AnimName.motion);
 			npc.agent.speed = npc.speed_walk;
 			break;
 		default:
 			// play animation.
-			npc.role_controller.CrossFade (HHK_Role_Controller.Idle);
+			npc.role_controller.CrossFade (HHK_Role_Controller.AnimName.idle);
 			npc.agent.speed = 0;
 			break;
 		}

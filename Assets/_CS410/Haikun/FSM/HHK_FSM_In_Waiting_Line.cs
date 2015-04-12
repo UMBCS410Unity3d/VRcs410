@@ -26,7 +26,7 @@ public class HHK_FSM_In_Waiting_Line : HHK_FSM_Action
 		newDir.Normalize();
 
 		// play animation
-		npc.role_controller.CrossFade (HHK_Role_Controller.Idle);
+		npc.role_controller.CrossFade (HHK_Role_Controller.AnimName.idle);
 
 		timeout = 0.5f;
 	}

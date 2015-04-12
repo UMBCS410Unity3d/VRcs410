@@ -60,7 +60,7 @@ public class HHK_FSM_Walking_NPC_Variables : MonoBehaviour
 	{
 		
 		// idle at beginning
-		role_controller.Play(HHK_Role_Controller.Idle);
+		role_controller.Play(HHK_Role_Controller.AnimName.idle);
 		
 	}
 	

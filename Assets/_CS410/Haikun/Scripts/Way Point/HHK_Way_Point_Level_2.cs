@@ -27,8 +27,8 @@ public class HHK_Way_Point_Level_2 : MonoBehaviour {
 	float force_to_leave_time_limit; // just for fix the bugs;
 
 	// play action in this spot
-	public string actionName = "stand to sit";
-	public string actionNameExit = "sit to stand";
+	public HHK_Role_Controller.AnimName actionName = HHK_Role_Controller.AnimName.idle;
+	public HHK_Role_Controller.AnimName actionNameExit = HHK_Role_Controller.AnimName.idle;
 
 	// next place the AI should go
 	public HHK_Way_Point_Level_1 next_place;

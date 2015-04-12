@@ -28,7 +28,7 @@ public class HHK_FSM_After_Spot : HHK_FSM_Action
 
 		HHK_FSM_Walking_NPC_Variables npc = Owner.GetComponent<HHK_FSM_Walking_NPC_Variables> ();
 
-		if (npc.role_controller.Is_Current_State(HHK_Role_Controller.Idle))
+		if (npc.role_controller.Is_Current_State(HHK_Role_Controller.AnimName.idle))
 		{
 			// if has a next place need to go
 			if (npc.spot.next_place)

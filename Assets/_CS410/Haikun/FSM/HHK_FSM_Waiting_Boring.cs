@@ -27,7 +27,7 @@ public class HHK_FSM_Waiting_Boring : FsmStateAction
 			return;
 		}
 		HHK_FSM_Walking_NPC_Variables npc = Owner.GetComponent<HHK_FSM_Walking_NPC_Variables> ();
-		if (npc.role_controller.Is_Current_State (HHK_Role_Controller.Idle)) {
+		if (npc.role_controller.Is_Current_State (HHK_Role_Controller.AnimName.idle)) {
 			Fsm.Event (walkingToWaitingPoint);
 			return;
 		}

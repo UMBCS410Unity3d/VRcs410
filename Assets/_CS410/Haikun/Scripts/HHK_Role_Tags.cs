@@ -26,7 +26,10 @@ public class HHK_Role_Tags : MonoBehaviour
 		WayPoint_Level_1,
 		WayPoint_Level_2,
 		WayPoint_Level_3,
-		WayPoint_Waitting_Point
+		WayPoint_Waitting_Point,
+
+		// zombie
+		Zombie
 	}
 
 	// 所属团队
@@ -123,6 +126,18 @@ public class HHK_Role_Tags : MonoBehaviour
 		return true;
 	}
 
+	// 是否属于指定团队（组）
+	public bool Is_Belong_Teams_Either(TAG[] tags)
+	{
+		List<TAG> listTeam = new List<TAG>(belong_teams);
+		foreach(TAG t in tags)
+		{
+			if (listTeam.Contains(t))
+				return true;
+		}
+		return false;
+	}
+
 	// 是否包含指定敌对团队（组）
 	public bool Is_Against_Teams(TAG[] tags)
 	{
@@ -133,6 +148,18 @@ public class HHK_Role_Tags : MonoBehaviour
 				return false;
 		}
 		return true;
+	}
+
+	// 是否包含指定敌对团队（组）
+	public bool Is_Against_Teams_Either(TAG[] tags)
+	{
+		List<TAG> listTeam = new List<TAG>(against_teams);
+		foreach(TAG t in tags)
+		{
+			if (listTeam.Contains(t))
+				return true;
+		}
+		return false;
 	}
 	
 

@@ -9,18 +9,38 @@ using System.Collections;
 [RequireComponent(typeof(Animator))]
 public class HHK_Role_Controller : MonoBehaviour 
 {
-	static public string Run = "motion";
-	static public string Walk = "motion";
-	static public string Idle = "idle";
-	static public string Left_Strafe = "left strafe";
-	static public string Right_Strafe = "rithe strafe";
-	static public string Left_Turn = "left turn";
-	static public string Right_Turn = "right turn";
-	static public string Stand_To_Sit = "stand to sit";
-	static public string Sitting = "sitting";
-	static public string Sit_To_Stand = "sit to stand";
-	static public string Boring = "boring";
-	static public string Boring1 = "boring 1";
+//	static public string Run = "motion";
+//	static public string Walk = "motion";
+//	static public string Idle = "idle";
+//	static public string Left_Strafe = "left_strafe";
+//	static public string Right_Strafe = "rithe_strafe";
+//	static public string Left_Turn = "left_turn";
+//	static public string Right_Turn = "right_turn";
+//	static public string Stand_To_Sit = "stand_to_sit";
+//	static public string Sitting = "sitting";
+//	static public string Sit_To_Stand = "sit_to_stand";
+//	static public string Boring = "boring";
+//	static public string Boring1 = "boring_1";
+//	static public string Stand_To_Sit_Type = "stand_to_sit_type_sit";
+//	static public string Sit_Type_To_Stand = "sit_type_sit_to_stand";
+
+	// enum -> string
+	public enum AnimName
+	{
+		motion,
+		idle,
+		left_strafe,
+		rithe_strafe,
+		left_turn,
+		right_turn,
+		stand_to_sit,
+		sit_to_stand,
+		boring,
+		boring_1,
+		stand_to_sit_type,
+		sit_type_to_stand,
+		collect_paper_from_print
+	}
 
 	// sound
 	public AudioClip footSound;
@@ -59,6 +79,13 @@ public class HHK_Role_Controller : MonoBehaviour
 			anim.Play(animName);
 	}
 
+	public void Play(AnimName animName)
+	{
+		// if (!anim.GetCurrentAnimatorStateInfo(0).IsName(animName))
+		// anim.CrossFade(animName,fadeTime);
+		anim.Play(animName.ToString());
+	}
+
 	// Play animation
 	public void CrossFade(string animName)
 	{
@@ -67,9 +94,21 @@ public class HHK_Role_Controller : MonoBehaviour
 
 	}
 
+	public void CrossFade(AnimName animName)
+	{
+		// if (!anim.GetCurrentAnimatorStateInfo(0).IsName(animName))
+		anim.CrossFade(animName.ToString(),fadeTime);
+		
+	}
+
 	public bool Is_Current_State(string animName)
 	{
 		return anim.GetCurrentAnimatorStateInfo(0).IsName(animName);
+	}
+
+	public bool Is_Current_State(AnimName animName)
+	{
+		return anim.GetCurrentAnimatorStateInfo(0).IsName(animName.ToString());
 	}
 
 	public void Play_Foot_Sound()
@@ -83,10 +122,10 @@ public class HHK_Role_Controller : MonoBehaviour
 		switch (action)
 		{
 		case 0:
-			anim.CrossFade(Boring1,fadeTime);
+			anim.CrossFade(AnimName.boring_1.ToString(),fadeTime);
 			break;
 		default:
-			anim.CrossFade(Boring,fadeTime);
+			anim.CrossFade(AnimName.boring.ToString(),fadeTime);
 			break;
 		}
 	}
