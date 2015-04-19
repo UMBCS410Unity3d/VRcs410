@@ -1,6 +1,0 @@
-<linker>
-       <assembly fullname="mscorlib">
-                <namespace fullname="System.Security.Cryptography" preserve="all"/>
-                <namespace fullname="System.IO.Directory" preserve="all"/>
-       </assembly>
-</linker>
