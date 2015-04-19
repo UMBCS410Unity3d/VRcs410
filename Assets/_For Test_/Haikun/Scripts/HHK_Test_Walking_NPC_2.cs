@@ -59,7 +59,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 	{
 
 		// idle at beginning
-		role_controller.Play(HHK_Role_Controller.Idle);
+		role_controller.Play(HHK_Role_Controller.AnimName.idle);
 	
 	}
 	
@@ -109,7 +109,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 		// set the destination
 		agent.SetDestination(place.transform.position);
 		// play animation.
-		role_controller.Play(HHK_Role_Controller.Run);
+		role_controller.Play(HHK_Role_Controller.AnimName.motion);
 		agent.speed = speed_run;
 
 	}
@@ -135,7 +135,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// set the destination
 			agent.SetDestination(spot.transform.position);
 			// play animation.
-			role_controller.Play(HHK_Role_Controller.Walk);
+			role_controller.Play(HHK_Role_Controller.AnimName.motion);
 			agent.speed = speed_walk;
 		}
 		// go to the waiting point
@@ -159,7 +159,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(waiting_point.Get_My_Position(role));
 				// play animation.
-				role_controller.Play(HHK_Role_Controller.Walk);
+				role_controller.Play(HHK_Role_Controller.AnimName.motion);
 				agent.speed = speed_walk;
 			}
 			// switch to walking
@@ -231,7 +231,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// stop
 			// agent.Stop();
 			// play animation.
-			role_controller.Play(HHK_Role_Controller.Idle);
+			role_controller.Play(HHK_Role_Controller.AnimName.motion);
 
 		}
 	}
@@ -240,7 +240,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 	// leave when the time out, switch to the looking for wp 1
 	void In_Spot()
 	{
-		role_controller.Play(HHK_Role_Controller.Idle);
+		role_controller.Play(HHK_Role_Controller.AnimName.idle);
 		// if not ready and I am not in this spot, witch to the in spot state
 		if (!spot.Is_Ready())
 		{
@@ -270,7 +270,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(place.transform.position);
 				// play animation.
-				role_controller.Play(HHK_Role_Controller.Run);
+				role_controller.Play(HHK_Role_Controller.AnimName.motion);
 				agent.speed = speed_run;
 			}
 			else
@@ -299,7 +299,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// stop
 			// agent.Stop();
 			// play animation.
-			role_controller.Play(HHK_Role_Controller.Idle);
+			role_controller.Play(HHK_Role_Controller.AnimName.idle);
 		}
 		
 		// keep checking the new waiting index of the line, move to the new position
@@ -312,7 +312,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// set the destination
 			agent.SetDestination(waiting_point.Get_My_Position(role));
 			// play animation.
-			role_controller.Play(HHK_Role_Controller.Walk);
+			role_controller.Play(HHK_Role_Controller.AnimName.motion);
 			agent.speed = speed_walk;
 		}
 		
@@ -331,7 +331,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(spot.transform.position);
 				// play animation
-				role_controller.Play(HHK_Role_Controller.Walk);
+				role_controller.Play(HHK_Role_Controller.AnimName.motion);
 				agent.speed = speed_walk;
 			}
 		}
@@ -342,7 +342,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 	// keep checking any availabe spot
 	void In_the_Waiting_Line()
 	{
-		role_controller.Play(HHK_Role_Controller.Idle);
+		role_controller.Play(HHK_Role_Controller.AnimName.idle);
 		if (!waiting_point)
 		{
 			state = STATE.Looking_WP_1;
@@ -363,7 +363,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 			// set the destination
 			agent.SetDestination(waiting_point.Get_My_Position(role));
 			// play animation.
-			role_controller.Play(HHK_Role_Controller.Walk);
+			role_controller.Play(HHK_Role_Controller.AnimName.motion);
 			agent.speed = speed_walk;
 			
 		}
@@ -383,7 +383,7 @@ public class HHK_Test_Walking_NPC_2 : MonoBehaviour {
 				// set the destination
 				agent.SetDestination(spot.transform.position);
 				// play animation
-				role_controller.Play(HHK_Role_Controller.Walk);
+				role_controller.Play(HHK_Role_Controller.AnimName.motion);
 				agent.speed = speed_walk;
 			}
 		}
