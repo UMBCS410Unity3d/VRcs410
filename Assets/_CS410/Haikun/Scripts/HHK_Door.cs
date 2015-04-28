@@ -56,6 +56,20 @@ public class HHK_Door : MonoBehaviour
 				roles.Add(role);
 			}
 		}
+
+		// leap motion
+		RigidFinger finger = other.GetComponentInParent<RigidFinger>();
+		if (finger)
+		{
+			//Debug.Log("finger");
+			role = other.GetComponentInParent<HHK_Role_Tags>();
+
+			if (role && !roles.Contains(role))
+			{
+				// in to this area
+				roles.Add(role);
+			}
+		}
 	}
 
 	void OnTriggerExit(Collider other) 
@@ -63,12 +77,8 @@ public class HHK_Door : MonoBehaviour
 		HHK_Role_Tags role = other.GetComponent<HHK_Role_Tags>();
 		if (role)
 		{
-			if (role.Is_Belong_Teams_Either(allowed))
-			{
-				// get out this area
+			if (roles.Contains(role))
 				roles.Remove(role);
-			}
-			
 		}
 	}
 
