@@ -21,7 +21,7 @@ public class HHK_Door : MonoBehaviour
 
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		anim = GetComponent<Animator>();
 		roles = new List<HHK_Role_Tags>();

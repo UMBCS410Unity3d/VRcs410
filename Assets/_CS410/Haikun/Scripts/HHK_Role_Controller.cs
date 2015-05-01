@@ -39,7 +39,8 @@ public class HHK_Role_Controller : MonoBehaviour
 		boring_1,
 		stand_to_sit_type,
 		sit_type_to_stand,
-		collect_paper_from_print
+		collect_paper_from_print,
+		die
 	}
 
 	// sound
