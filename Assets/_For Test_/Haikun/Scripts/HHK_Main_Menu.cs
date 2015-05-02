@@ -4,7 +4,7 @@ using System.Collections;
 
 public class HHK_Main_Menu : MonoBehaviour 
 {
-	public string next_level = "HHK_Test_4";
+	public string next_level = "S-03";
 	// Use this for initialization
 	void Start () 
 	{
