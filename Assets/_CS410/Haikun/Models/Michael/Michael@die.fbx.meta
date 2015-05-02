@@ -174,7 +174,7 @@ ModelImporter:
     400164: upperJaw
     400166: upperJaw_End
     4300000: Michael_Geo1
-    7400000: mixamo.com
+    7400000: die
     9500000: //RootNode
     13700000: Michael_Geo1
   materials:
@@ -192,7 +192,208 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: die
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 135
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: .0671140924
+        functionName: Play_Die_Sound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hip
+        weight: 1
+      - path: hip/abdomen
+        weight: 1
+      - path: hip/abdomen/chest
+        weight: 1
+      - path: hip/abdomen/chest/lCollar
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1/lIndex2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1/lIndex2/lIndex3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lIndex1/lIndex2/lIndex3/lIndex3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1/lMid2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1/lMid2/lMid3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lMid1/lMid2/lMid3/lMid3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1/lPinky2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1/lPinky2/lPinky3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lPinky1/lPinky2/lPinky3/lPinky3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1/lRing2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1/lRing2/lRing3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lRing1/lRing2/lRing3/lRing3_End
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1/lThumb2
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1/lThumb2/lThumb3
+        weight: 1
+      - path: hip/abdomen/chest/lCollar/lShldr/lForeArm/lHand/lThumb1/lThumb2/lThumb3/lThumb3_End
+        weight: 1
+      - path: hip/abdomen/chest/neck
+        weight: 1
+      - path: hip/abdomen/chest/neck/head
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/eyeBrow
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/eyeBrow/eyeBrow_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lEye
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lEye/lEye_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04/tongue05
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04/tongue05/tongueTip
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/lowerJaw/tongueBase/tongue01/tongue02/tongue03/tongue04/tongue05/tongueTip/tongueTip_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/rEye
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/rEye/rEye_End
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/upperJaw
+        weight: 1
+      - path: hip/abdomen/chest/neck/head/upperJaw/upperJaw_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1/rIndex2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1/rIndex2/rIndex3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rIndex1/rIndex2/rIndex3/rIndex3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1/rMid2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1/rMid2/rMid3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rMid1/rMid2/rMid3/rMid3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1/rPinky2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1/rPinky2/rPinky3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rPinky1/rPinky2/rPinky3/rPinky3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1/rRing2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1/rRing2/rRing3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rRing1/rRing2/rRing3/rRing3_End
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1/rThumb2
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1/rThumb2/rThumb3
+        weight: 1
+      - path: hip/abdomen/chest/rCollar/rShldr/rForeArm/rHand/rThumb1/rThumb2/rThumb3/rThumb3_End
+        weight: 1
+      - path: hip/bodyMorphs
+        weight: 1
+      - path: hip/bodyMorphs/bodyMorphs_End
+        weight: 1
+      - path: hip/lThigh
+        weight: 1
+      - path: hip/lThigh/lShin
+        weight: 1
+      - path: hip/lThigh/lShin/lFoot
+        weight: 1
+      - path: hip/lThigh/lShin/lFoot/lToe
+        weight: 1
+      - path: hip/lThigh/lShin/lFoot/lToe/lToe_End
+        weight: 1
+      - path: hip/rThigh
+        weight: 1
+      - path: hip/rThigh/rShin
+        weight: 1
+      - path: hip/rThigh/rShin/rFoot
+        weight: 1
+      - path: hip/rThigh/rShin/rFoot/rToe
+        weight: 1
+      - path: hip/rThigh/rShin/rFoot/rToe/rToe_End
+        weight: 1
+      - path: Michael_Geo1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

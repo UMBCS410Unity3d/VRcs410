@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(HHK_Role_Tags))]
@@ -7,6 +8,8 @@ using System.Collections;
 [RequireComponent(typeof(HHK_Role_Controller))]
 public class HHK_FSM_Walking_NPC_Variables : MonoBehaviour 
 {
+	List<RigidFinger> fingers;
+
 	// move type
 	public enum MOVETYPE
 	{
@@ -54,6 +57,8 @@ public class HHK_FSM_Walking_NPC_Variables : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		role = GetComponent<HHK_Role_Tags>();
 		role_controller = GetComponent<HHK_Role_Controller>();
+
+		fingers = new List<RigidFinger>();
 	}
 	// Use this for initialization
 	void Start () 
@@ -67,6 +72,33 @@ public class HHK_FSM_Walking_NPC_Variables : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		if (fingers.Count >= 4 && gameObject.GetComponent<Collider>().enabled )
+		{
+			gameObject.GetComponent<PlayMakerFSM>().SendEvent("Die");
+			gameObject.GetComponent<Collider>().enabled = false;
+			fingers.Clear();
+		}
+	}
+
+	void OnTriggerEnter(Collider other) 
+	{
+		// leap motion
+		RigidFinger finger = other.GetComponentInParent<RigidFinger>();
+		if (finger && !fingers.Contains(finger))
+		{
+
+			fingers.Add(finger);
+		}
+	}
 	
+	void OnTriggerExit(Collider other) 
+	{
+		// leap motion
+		RigidFinger finger = other.GetComponentInParent<RigidFinger>();
+		if (finger)
+		{
+			fingers.Remove(finger);
+		}
+
 	}
 }
