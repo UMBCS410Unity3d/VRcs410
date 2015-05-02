@@ -45,13 +45,11 @@ public class HHK_Role_Controller : MonoBehaviour
 
 	// sound
 	public AudioClip footSound;
-	public AudioClip dieSound;
 
 	Animator anim;
 	NavMeshAgent agent;
 
-	AudioSource audio; // must be assigned!
-	
+	public AudioSource audioFoot; // must be assigned!
 
 	float fadeTime = 0.05f;
 
@@ -60,7 +58,6 @@ public class HHK_Role_Controller : MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 		agent = GetComponent<NavMeshAgent>();
-		audio = GetComponent<AudioSource>();
 	}
 
 	void Start () 
@@ -117,7 +114,7 @@ public class HHK_Role_Controller : MonoBehaviour
 
 	public void Play_Foot_Sound()
 	{
-		audio.PlayOneShot(footSound);
+		audioFoot.PlayOneShot(footSound);
 	}
 
 	public void Play_Boring()
@@ -132,12 +129,6 @@ public class HHK_Role_Controller : MonoBehaviour
 			anim.CrossFade(AnimName.boring.ToString(),fadeTime);
 			break;
 		}
-	}
-
-	public void Play_Die_Sound()
-	{
-		audio.outputAudioMixerGroup = null;
-		audio.PlayOneShot(dieSound);
 	}
 
 }

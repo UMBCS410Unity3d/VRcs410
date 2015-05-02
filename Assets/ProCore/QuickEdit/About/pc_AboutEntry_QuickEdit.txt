@@ -1,6 +1,0 @@
-name: QuickEdit
-identifier: QuickEdit_AboutWindowIdentifier
-version: 1.5.2
-revision: 3218
-date: 03-13-2015
-changelog: Assets/ProCore/QuickEdit/About/changelog.txt
