@@ -52,41 +52,43 @@ public class HHK_UI_S3_075 : HHK_UI_Panel_Base {
 	// send email
 	IEnumerator SendEmail()
 	{
-		//yield return new WaitForSeconds(1f);
+		
+		button.interactable = false;
+		buttonText.text = "Completed.";
+
+        //yield return new WaitForSeconds(1f);
 		//Debug.Log(HHK_Simple_Mission.Get().emailAddress);
-//		MailMessage mail = new MailMessage();  	
-//		mail.From = new MailAddress("umbcs410dw@gmail.com");  
-//		mail.To.Add(HHK_Simple_Mission.Get().emailAddress);  
-//
-//		
-//		yield return new WaitForSeconds(0.1f);
-//		
-//		mail.Subject = "CS 410 project";  
-//		mail.Body = "Hey, you passed CS 410.\n" +
-//				"-- Digital Walkers --";  
-//		// mail.Attachments.Add(new Attachment("Screen.png"));  
-//		SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");  
-//		smtpServer.Port = 587;  
-//		smtpServer.Credentials 
-//			= new System.Net.NetworkCredential("umbcs410dw@gmail.com", "Ab123456.") as ICredentialsByHost;  
-//		smtpServer.EnableSsl = true;  
-//		ServicePointManager.ServerCertificateValidationCallback =  
-//			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)  
-//		{ return true; };  
-//		smtpServer.Send(mail); 
+		MailMessage mail = new MailMessage();  	
+		mail.From = new MailAddress("umbcs410dw@gmail.com");  
+		mail.To.Add(HHK_Simple_Mission.Get().emailAddress);  
+
+		
+		yield return new WaitForSeconds(0.1f);
+		
+		mail.Subject = "CS 410 project";  
+		mail.Body = "Hey, you passed CS 410.\n" +
+				"-- Digital Walkers --";  
+		// mail.Attachments.Add(new Attachment("Screen.png"));  
+		SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");  
+		smtpServer.Port = 587;  
+		smtpServer.Credentials 
+			= new System.Net.NetworkCredential("umbcs410dw@gmail.com", "Ab123456.") as ICredentialsByHost;  
+		smtpServer.EnableSsl = true;  
+		ServicePointManager.ServerCertificateValidationCallback =  
+			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)  
+		{ return true; };  
+		smtpServer.Send(mail); 
 		//emailAddress.text = "";
 		//yield return new WaitForSeconds(3f);
 
 
-		HHK_EmailSystem.Get().Send(HHK_Simple_Mission.Get().emailAddress,
-		                           "CS 410 project",
-		                           ("Hey, you passed CS 410.\n" +
-		 				"-- Digital Walkers --"));
+//		HHK_EmailSystem.Get().Send(HHK_Simple_Mission.Get().emailAddress,
+//		                           "CS 410 project",
+//		                           ("Hey, you passed CS 410.\n" +
+//		 				"-- Digital Walkers --"));
 
 
-	
-		button.interactable = false;
-		buttonText.text = "Completed.";
+
 		yield return null;
 	}
 

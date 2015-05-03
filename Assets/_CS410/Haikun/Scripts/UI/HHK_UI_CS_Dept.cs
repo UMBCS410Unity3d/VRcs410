@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using System;  
-using System.Net;  
-using System.Net.Mail;  
+using System.Net;
+using System.Net.Mail;
 using System.Net.Security;  
 using System.Security.Cryptography.X509Certificates;
 
@@ -103,47 +103,49 @@ public class HHK_UI_CS_Dept : HHK_UI_Panel_Base {
 	// send email
 	IEnumerator SendEmail()
 	{
+		emailAddress.interactable = false;
+
 		// active the mission1
 		MessageSystem.Send(MessageSystem.Mission1,emailAddress.text);
 
 		// Send email
-		HHK_EmailSystem.Get().Send(emailAddress.text,
-									"Digital Walkers say hello to you!",
-		                           ("Hello, this message is sent from CS Department of Virtual UMass Boston.\n" +
-		                           			"Also, you active a mission, please go to room S-03-075 to check it out. " +
-		                           			"Good Luck!" +
-		                           			"-- Digital Walkers --"));
+//		HHK_EmailSystem.Get().Send(emailAddress.text,
+//									"Digital Walkers say hello to you!",
+//		                           ("Hello, this message is sent from CS Department of Virtual UMass Boston.\n" +
+//		                           			"Also, you active a mission, please go to room S-03-075 to check it out. " +
+//		                           			"Good Luck!" +
+//		                           			"-- Digital Walkers --"));
 
 
 		//yield return new WaitForSeconds(1f);
 
-//		MailMessage mail = new MailMessage();  	
-//		mail.From = new MailAddress("umbcs410dw@gmail.com");  
-//		mail.To.Add(emailAddress.text);  
-//
-//		// emailAddress.text = "Sending...";
-//
-//
-//		mail.Subject = "Digital Walkers say hello to you!";  
-//		mail.Body = "Hello, this message is sent from CS Department of Virtual UMass Boston.\n" +
-//			"Also, you active a mission, please go to room S-03-075 to check it out. " +
-//			"Good Luck!" +
-//			"-- Digital Walkers --";  
-//		// mail.Attachments.Add(new Attachment("Screen.png"));  
-//		SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");  
-//		smtpServer.Port = 587;  
-//		smtpServer.Credentials 
-//			= new System.Net.NetworkCredential("umbcs410dw@gmail.com", "Ab123456.") as ICredentialsByHost;  
-//		smtpServer.EnableSsl = true;  
-//		ServicePointManager.ServerCertificateValidationCallback =  
-//			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)  
-//		{ return true; };  
-//		smtpServer.Send(mail); 
-		//emailAddress.text = "";
-		//yield return new WaitForSeconds(3f);
+		MailMessage mail = new MailMessage();  	
+		mail.From = new MailAddress("umbcs410dw@gmail.com");  
+		mail.To.Add(emailAddress.text);  
 
-		emailAddress.interactable = false;
-		emailAddress.text = "Sending...";
+		// emailAddress.text = "Sending...";
+
+
+		mail.Subject = "Digital Walkers say hello to you!";  
+		mail.Body = "Hello, this message is sent from CS Department of Virtual UMass Boston.\n" +
+			"Also, you active a mission, please go to room S-03-075 to check it out. " +
+			"Good Luck!" +
+			"-- Digital Walkers --";  
+		// mail.Attachments.Add(new Attachment("Screen.png"));  
+		SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");  
+		smtpServer.Port = 587;  
+		smtpServer.Credentials 
+			= new System.Net.NetworkCredential("umbcs410dw@gmail.com", "Ab123456.") as ICredentialsByHost;  
+		smtpServer.EnableSsl = true;  
+		ServicePointManager.ServerCertificateValidationCallback =  
+			delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)  
+		{ return true; };  
+		smtpServer.Send(mail); 
+		emailAddress.text = "";
+		// yield return new WaitForSeconds(3f);
+
+		// emailAddress.interactable = false;
+		// emailAddress.text = "Sending...";
 
 		GameObject go = GameObject.FindGameObjectWithTag("Player") as GameObject;
 		FirstPersonController fpc = go.GetComponent<FirstPersonController>();
