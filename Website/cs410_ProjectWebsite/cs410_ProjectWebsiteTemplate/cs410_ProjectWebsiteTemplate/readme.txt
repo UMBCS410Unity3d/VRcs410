@@ -1,0 +1,25 @@
+In the folder that you have received, you need to modify project.html and projectdetail.html file.
+
+In project.html file, look for a comment which says "To be filled out by each team"
+Look for a <div> with your team name. You need to add the image of your project logo. Please keep the image in the folder images/logo and reference it here. Then, write your project name and a 1-2 line description of your project. Please be brief.
+
+Save it and move on to projectdetail.html file.
+The file has been divided into multiple sections and each section is labelled in capital letters.
+
+HEADER : No change required. Leave it as it is.
+
+NAVIGATION MENU : No change required. Leave it as it is.
+
+MAIN CONTENT : This is the section that you need to modify
+- ABOUT PROJECT : Write your project name. Select a logo or an image to be used as logo and keep it in images/logo folder. Give its link in this section. Add a description of your project.
+
+- SCREENSHOTS : You will need two versions of all your screenshot images, thumbnail and fullscreen. Keep all the thumbnail images in folder images/thumbnail and all the fullscreen images in folder images/fullscreen and correctly reference them in this section. Please add meaningful caption and alt text to all your screenshots in this section. Currently, the section has nine screenshots. Feel free to add or remove the lines based on the number of screenshots you have.
+
+- ABOUT THE TEAM : For each team member add a photo and a brief introduction. Please feel free to use any photo/avatars (must be suitable) you want to use. Keep all the images under images/team folder.
+
+- VIDEO DEMO : Keep the video file in the folder images/video folder and reference it in this section. Please make sure that the video format is supported by html5. If not, use any available video conversion tool and convert your video to an acceptable format.
+
+FOOTER : No change required. Leave it as it is.
+
+Note: I understand that when you add details about your project, some items may not properly align and you may want to change some margins, height width etc. Please do not modify the css file. Use inline style to accomodate any changes that you need to do. (By inline, I mean use style attribute in the individual tag to add or override any attributes). Please do not change the color scheme, or basically any attribute that will make your page look different than the others.
+If you have any questions, please email the TA for help.
